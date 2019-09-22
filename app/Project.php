@@ -61,7 +61,7 @@ class Project extends Model
             ]);
     }
 
-    public static function insertNewProject(
+    public static function createProject(
         $project_name,
         $team_size,
         $git_url,
