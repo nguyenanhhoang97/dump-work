@@ -20,4 +20,58 @@ class Project extends Model
             ->limit($pageSize)
             ->get();
     }
+    public static function getProjectById($id)
+    {
+        return DB::table('projects')
+            ->where('id', $id)
+            ->first();
+    }
+
+    public static function updateProjectById(
+        $id,
+        $project_name,
+        $project_description,
+        $team_size,
+        $git_url,
+        $excution_time,
+        $cost,
+        $incom,
+        $guarantee
+    ) {
+        return DB::table('projects')
+            ->where('id', $id)
+            ->update([
+                'project_name' => $project_name,
+                'project_description' => $project_description,
+                'team_size' => $team_size,
+                'git_url' => $git_url,
+                'excution_time' => $excution_time,
+                'cost' => $cost,
+                'incom' => $incom,
+                'guarantee' => $guarantee
+            ]);
+    }
+
+    public static function deleteProjectById($id)
+    {
+        return DB::table('projects')
+            ->where('id', $id)
+            ->update([
+                'is_deleted' => true
+            ]);
+    }
+
+    public static function insertNewProject(
+        $project_name,
+        $team_size,
+        $git_url,
+        $excution_time,
+        $cost,
+        $incom,
+        $guarantee
+    ) {
+        return DB::table('projects')
+            ->insert(['project_name' => $project_name, 'team_size' => $team_size, 'git_url' => $git_url, 'excution_time' => $excution_time, 'cost' => $cost, 'incom' => $incom, 'guarantee' => $guarantee
+            ]);
+    }
 }
