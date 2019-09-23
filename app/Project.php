@@ -11,15 +11,16 @@ class Project extends Model
 
     public $timestamps = true;
 
-    public static function getAllProjects($pageIndex, $pageSize, $search, $is_deleted)
+    public static function getAllProjects($pageIndex, $pageSize, $search)
     {
 
         $offset = $pageIndex * $pageSize;
         return DB::table('projects')
+            ->where('is_deleted', false)
             ->where('project_name', 'like', '%' . $search . '%')
             ->offset($offset)
             ->limit($pageSize)
-            ->get($offset !== $is_deleted);
+            ->get();
     }
     public static function getProjectById($id)
     {
@@ -77,16 +78,12 @@ class Project extends Model
             ]);
     }
 
-    public static function restoreProjects($id, $offset)
+    public static function restoreProject($id)
     {
         return DB::table('projects')
             ->where('id', $id)
             ->update([
-                'is_deleted' => true
+                'is_deleted' => false
             ]);
-            
-        if ('is_deleted' != true) {
-            return $offset;
-        }
     }
 }
