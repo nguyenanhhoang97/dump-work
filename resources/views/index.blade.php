@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="css/app.css" />
 </head>
 
-<body class="sidebar-mini">
+<body class="sidebar-mini white-content">
   <div id="app">
     <app></app>
   </div>

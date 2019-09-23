@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper">
     <sidebar />
-    <div class="main-panel">
+    <div class="main-panel" data="red">
       <navbar />
       <!-- Content -->
       <div class="content">
