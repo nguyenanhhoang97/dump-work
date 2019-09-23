@@ -62827,7 +62827,7 @@ var render = function() {
       _vm._v(" "),
       _c(
         "div",
-        { staticClass: "main-panel" },
+        { staticClass: "main-panel", attrs: { data: "red" } },
         [
           _c("navbar"),
           _vm._v(" "),
@@ -63296,7 +63296,7 @@ var staticRenderFns = [
         )
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "sidebar" }, [
+      _c("div", { staticClass: "sidebar", attrs: { data: "red" } }, [
         _c("div", { staticClass: "sidebar-wrapper" }, [
           _c("div", { staticClass: "logo" }, [
             _c(
