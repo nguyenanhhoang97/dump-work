@@ -1,17 +1,34 @@
 <template>
-  <div>
-    <h1>dump-work</h1>
-
-    <p>
-      <router-link :to="{ name: 'home' }">Home</router-link>|
-      <router-link :to="{ name: 'hello-world' }">Hello World</router-link>
-    </p>
-
-    <div class="container">
-      <router-view></router-view>
+  <div class="wrapper">
+    <sidebar />
+    <div class="main-panel">
+      <navbar />
+      <!-- Content -->
+      <div class="content">
+        <router-view></router-view>
+      </div>
+      <app-footer />
     </div>
   </div>
 </template>
+
+<style>
+</style>
+
+
 <script>
-export default {};
+import { mapState, mapGetters, mapActions } from "vuex";
+import Navbar from "./Navbar";
+import Sidebar from "./Sidebar";
+import AppFooter from "./AppFooter";
+
+export default {
+  name: "App",
+
+  components: {
+    Navbar,
+    Sidebar,
+    AppFooter
+  }
+};
 </script>

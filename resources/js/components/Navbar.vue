@@ -78,7 +78,7 @@
             <li class="dropdown nav-item">
               <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
                 <div class="photo">
-                  <img src="../assets/img/mike.jpg" alt="Profile Photo" />
+                  <img src="../../assets/img/mike.jpg" alt="Profile Photo" />
                 </div>
                 <b class="caret d-none d-lg-block d-xl-block"></b>
                 <p class="d-lg-none">Log out</p>

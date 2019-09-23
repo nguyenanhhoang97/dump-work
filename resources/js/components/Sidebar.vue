@@ -12,8 +12,8 @@
       -->
       <div class="sidebar-wrapper">
         <div class="logo">
-          <a href="javascript:void(0)" class="simple-text logo-mini">CT</a>
-          <a href="javascript:void(0)" class="simple-text logo-normal">Creative Tim</a>
+          <a href="javascript:void(0)" class="simple-text logo-mini">DW</a>
+          <a href="javascript:void(0)" class="simple-text logo-normal">dump-work</a>
         </div>
         <ul class="nav">
           <li class="active">
