@@ -21,7 +21,7 @@
               <span class="navbar-toggler-bar bar3"></span>
             </button>
           </div>
-          <a class="navbar-brand" href="javascript:void(0)">Dashboard</a>
+          <a class="navbar-brand" href="javascript:void(0)">{{ currentRoute }}</a>
         </div>
         <button
           class="navbar-toggler"
@@ -124,7 +124,17 @@
 </template>
 
 <script>
-export default {};
+import { mapActions, mapState } from "vuex";
+
+export default {
+  computed: {
+    ...mapState("global", ["loading"]),
+
+    currentRoute() {
+      return this.$route.name;
+    }
+  }
+};
 </script>
 
 <style>

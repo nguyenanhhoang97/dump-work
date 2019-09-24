@@ -8,13 +8,13 @@ const state = {
     {
       id: 0,
       name: "Dashboard",
-      route: "dashboard",
+      route: "Dashboard",
       icon: "tim-icons icon-chart-pie-36"
     },
     {
       id: 1,
       name: "Projects",
-      route: "projects",
+      route: "Projects",
       icon: "tim-icons icon-molecule-40"
     }
   ]
