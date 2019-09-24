@@ -25,6 +25,7 @@ class Project extends Model
     public static function getProjectById($id)
     {
         return DB::table('projects')
+            ->where('is_deleted', true)
             ->where('id', $id)
             ->first();
     }
@@ -41,6 +42,7 @@ class Project extends Model
         $guarantee
     ) {
         return DB::table('projects')
+            ->where('is_deleted', true)
             ->where('id', $id)
             ->update([
                 'project_name' => $project_name,
@@ -55,7 +57,8 @@ class Project extends Model
     }
 
     public static function deleteProjectById($id)
-    {
+    {   
+        
         return DB::table('projects')
             ->where('id', $id)
             ->update([
@@ -85,5 +88,6 @@ class Project extends Model
             ->update([
                 'is_deleted' => false
             ]);
+            
     }
 }
