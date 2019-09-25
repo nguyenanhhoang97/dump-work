@@ -25,8 +25,8 @@ class Project extends Model
     public static function getProjectById($id)
     {
         return DB::table('projects')
-            ->where('is_deleted', true)
             ->where('id', $id)
+            ->where('is_deleted', false)
             ->first();
     }
 
@@ -42,8 +42,8 @@ class Project extends Model
         $guarantee
     ) {
         return DB::table('projects')
-            ->where('is_deleted', true)
             ->where('id', $id)
+            ->where('is_deleted', false)
             ->update([
                 'project_name' => $project_name,
                 'project_description' => $project_description,
@@ -57,13 +57,15 @@ class Project extends Model
     }
 
     public static function deleteProjectById($id)
-    {   
-        
+    {
+
         return DB::table('projects')
             ->where('id', $id)
+            ->where('is_deleted', false)
             ->update([
                 'is_deleted' => true
             ]);
+            
     }
 
     public static function createProject(
@@ -85,9 +87,9 @@ class Project extends Model
     {
         return DB::table('projects')
             ->where('id', $id)
+            ->where('is_deleted', false)
             ->update([
                 'is_deleted' => false
             ]);
-            
     }
 }
