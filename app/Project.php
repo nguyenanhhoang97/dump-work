@@ -65,7 +65,6 @@ class Project extends Model
             ->update([
                 'is_deleted' => true
             ]);
-            
     }
 
     public static function createProject(
@@ -87,7 +86,7 @@ class Project extends Model
     {
         return DB::table('projects')
             ->where('id', $id)
-            ->where('is_deleted', false)
+            ->where('is_deleted', true)
             ->update([
                 'is_deleted' => false
             ]);
