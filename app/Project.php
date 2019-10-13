@@ -36,7 +36,7 @@ class Project extends Model
         $project_description,
         $team_size,
         $git_url,
-        $excution_time,
+        $execution_time,
         $cost,
         $incom,
         $guarantee
@@ -49,7 +49,7 @@ class Project extends Model
                 'project_description' => $project_description,
                 'team_size' => $team_size,
                 'git_url' => $git_url,
-                'excution_time' => $excution_time,
+                'execution_time' => $execution_time,
                 'cost' => $cost,
                 'incom' => $incom,
                 'guarantee' => $guarantee
@@ -69,16 +69,17 @@ class Project extends Model
 
     public static function createProject(
         $project_name,
+        $project_description,
         $team_size,
         $git_url,
-        $excution_time,
+        $execution_time,
         $cost,
         $incom,
         $guarantee
     ) {
         return DB::table('projects')
             ->insert([
-                'project_name' => $project_name, 'team_size' => $team_size, 'git_url' => $git_url, 'excution_time' => $excution_time, 'cost' => $cost, 'incom' => $incom, 'guarantee' => $guarantee
+                'project_name' => $project_name, 'project_description' => $project_description, 'team_size' => $team_size, 'git_url' => $git_url, 'execution_time' => $execution_time, 'cost' => $cost, 'incom' => $incom, 'guarantee' => $guarantee
             ]);
     }
 
