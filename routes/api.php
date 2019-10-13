@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProjectController;
 use Illuminate\Http\Request;
 
 /*
@@ -18,3 +19,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('/project/list', 'ProjectController@getProjectList');
+Route::get('/project/item', 'ProjectController@getProjectById');
+Route::post('/project/create', 'ProjectController@createProject');
+
