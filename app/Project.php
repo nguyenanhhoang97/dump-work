@@ -86,4 +86,10 @@ class Project extends Model
                 'is_deleted' => false
             ]);
     }
+
+    public static function countProject()
+    {
+        return DB::table('projects')
+            ->count();
+    }
 }
