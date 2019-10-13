@@ -18,33 +18,26 @@
         alt="friends"
       />
     </div>
-
-    <el-card class="box-card">
-      <el-row>
-        <el-col :span="24">
-          <el-button style="float: right; padding: 3px 0" type="text" icon="el-icon-more"></el-button>
-        </el-col>
-      </el-row>
-      <div class="project-info">
-        <div class="project-thumb">
-          <img src="http://html.crumina.net/html-olympus/img/logo.png" alt="Olympus" />
-        </div>
-        <div class="project-name">
-          <p>Project Name</p>
-          <pre>ahihihi</pre>
-        </div>
-      </div>
-      <div class="project-action">
-        <el-button type="primary" icon="el-icon-edit" circle></el-button>
-        <el-button type="success" icon="el-icon-check" circle></el-button>
-        <el-button type="danger" icon="el-icon-delete" circle></el-button>
-      </div>
-    </el-card>
+    <el-row :gutter="20">
+      <el-col :span="4">
+        <create-project-card></create-project-card>
+      </el-col>
+      <el-col :span="4">
+        <project-card></project-card>
+      </el-col>
+    </el-row>
   </div>
 </template>
 
 <script>
-export default {};
+import CreateProjectCard from "./CreateProjectCard/index.vue";
+import ProjectCard from "./ProjectCard/index.vue";
+export default {
+  components: {
+    CreateProjectCard,
+    ProjectCard
+  }
+};
 </script>
 <style lang="scss" scoped>
 .projects {
