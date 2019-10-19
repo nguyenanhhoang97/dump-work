@@ -30,6 +30,13 @@ class Project extends Model
             ->first();
     }
 
+    public static function getDeletedProjectById($id)
+    { 
+        return DB::table('projects')
+        ->where('id', $id)
+        ->where('is_deleted', true)
+        ->first();
+    }
     public static function updateProjectById(
         $id,
         $project_name,
@@ -66,6 +73,7 @@ class Project extends Model
                 'is_deleted' => true
             ]);
     }
+
 
     public static function createProject(
         $project_name,
