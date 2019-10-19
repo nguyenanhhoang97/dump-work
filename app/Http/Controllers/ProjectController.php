@@ -45,7 +45,12 @@ class ProjectController extends Controller
     {
         $id = (int) $req->id;
         $project = Project::deleteProjectById($id);
-        return response()->json(array('project' => $project), 200);
+        if ($project == 1) {
+            $deletedProject = Project::getProjectById($id);
+            return response()->json(array('message' => 'Deleted project successfully', 'project' => $deletedProject), 200);
+        } else {
+            return response()->json(array('message' => 'Cannot delete project successfully', 'project'), 200);
+        }
     }
 
     public function createProject(Request $req)
@@ -56,6 +61,12 @@ class ProjectController extends Controller
         $project['incom'] = floatval($project['incom']);
         $project['guarantee'] = floatval($project['guarantee']);
         $result = Project::createProject($project['project_name'], $project['project_description'], $project['team_size'], $project['git_url'], $project['execution_time'], $project['cost'], $project['incom'], $project['guarantee']);
-        return response()->json(array('project' => $result), 200);
+        // return response()->json(array('message' => 'Created project successfully', 'project' => $result), 200);
+        if ($result == true) {
+            // $createdProject = Project::getProjectById($project['id']);
+            return response()->json(array('message' => 'Created project successfully', 'project'), 200);
+        } else {
+            return response()->json(array('message' => 'Cannot create project successfully', 'project'), 200);
+        }
     }
 }
