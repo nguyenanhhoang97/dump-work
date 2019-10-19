@@ -24,6 +24,29 @@ class ProjectController extends Controller
         return response()->json(array('project' => $project), 200);
     }
 
+    public function updateProjectById(Request $req)
+    {
+        // dd($req->all());
+        $id = (int) $req->id;
+        $project_name = $req->project_name;
+        $project_description = $req->project_description;
+        $team_size = (float) $req->team_size;
+        $execution_time = (float) $req->execution_time;
+        $git_url = $req->git_url;
+        $cost = (float) $req->cost;
+        $incom = (float) $req->incom;
+        $guarantee = (float) $req->guarantee;
+        $project = Project::updateProjectById($id, $project_name, $project_description, $team_size, $git_url, $execution_time, $cost, $incom, $guarantee);
+        return response()->json(array('project' => $project), 200);
+    }
+
+    public function deleteProjectById(Request $req)
+    { 
+        $id = (int)$req->id;
+        $project = Project::deleteProjectById($id);
+        return response()->json(array('project' => $project), 200);
+    }
+
     public function createProject(Request $req)
     {
         $project = $req->all();

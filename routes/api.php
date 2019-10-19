@@ -20,5 +20,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('/project/list', 'ProjectController@getProjectList');
 Route::get('/project/item', 'ProjectController@getProjectById');
+Route::get('/project/update', 'ProjectController@updateProjectById');
+Route::get('/project/delete', 'ProjectController@deleteProjectById');
 Route::post('/project/create', 'ProjectController@createProject');
 
