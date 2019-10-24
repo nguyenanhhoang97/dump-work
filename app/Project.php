@@ -37,6 +37,7 @@ class Project extends Model
         ->where('is_deleted', true)
         ->first();
     }
+
     public static function updateProjectById(
         $id,
         $project_name,
