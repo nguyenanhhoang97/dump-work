@@ -16,6 +16,12 @@ const state = {
       name: "Projects",
       route: "Projects",
       icon: "tim-icons icon-molecule-40"
+    },
+    {
+      id: 2,
+      name: "Users",
+      route: "Users",
+      icon: "tim-icons icon-molecule-40"
     }
   ]
 };

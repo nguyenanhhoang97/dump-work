@@ -81405,6 +81405,11 @@ var state = {
     name: "Projects",
     route: "Projects",
     icon: "tim-icons icon-molecule-40"
+  }, {
+    id: 2,
+    name: "Users",
+    route: "Users",
+    icon: "tim-icons icon-molecule-40"
   }]
 };
 
@@ -81549,6 +81554,79 @@ var SET_PROJECTS = "SET_PROJECTS";
 
 /***/ }),
 
+/***/ "./resources/js/modules/users/store/actions.js":
+/*!*****************************************************!*\
+  !*** ./resources/js/modules/users/store/actions.js ***!
+  \*****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// User actions
+
+/***/ }),
+
+/***/ "./resources/js/modules/users/store/getters.js":
+/*!*****************************************************!*\
+  !*** ./resources/js/modules/users/store/getters.js ***!
+  \*****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// User getters
+
+/***/ }),
+
+/***/ "./resources/js/modules/users/store/index.js":
+/*!***************************************************!*\
+  !*** ./resources/js/modules/users/store/index.js ***!
+  \***************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _getters__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./getters */ "./resources/js/modules/users/store/getters.js");
+/* harmony import */ var _getters__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_getters__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./actions */ "./resources/js/modules/users/store/actions.js");
+/* harmony import */ var _actions__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_actions__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _types__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./types */ "./resources/js/modules/users/store/types.js");
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+
+var state = {
+  users: []
+};
+
+var mutations = _defineProperty({}, _types__WEBPACK_IMPORTED_MODULE_2__["SET_USERS"], function (state, users) {
+  state.users = users;
+});
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  namespaced: true,
+  state: state,
+  getters: _getters__WEBPACK_IMPORTED_MODULE_0__,
+  actions: _actions__WEBPACK_IMPORTED_MODULE_1__,
+  mutations: mutations
+});
+
+/***/ }),
+
+/***/ "./resources/js/modules/users/store/types.js":
+/*!***************************************************!*\
+  !*** ./resources/js/modules/users/store/types.js ***!
+  \***************************************************/
+/*! exports provided: SET_USERS */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SET_USERS", function() { return SET_USERS; });
+var SET_USERS = "SET_USERS";
+
+/***/ }),
+
 /***/ "./resources/js/router/index.js":
 /*!**************************************!*\
   !*** ./resources/js/router/index.js ***!
@@ -81616,6 +81694,12 @@ var Projects = function Projects() {
   });
 };
 
+var Users = function Users() {
+  return __webpack_require__.e(/*! import() */ 2).then(__webpack_require__.bind(null, /*! ../modules/users/index */ "./resources/js/modules/users/index.vue")).then(function (m) {
+    return m["default"] || m;
+  });
+};
+
 /* harmony default export */ __webpack_exports__["default"] = ([{
   path: "/",
   redirect: {
@@ -81629,6 +81713,10 @@ var Projects = function Projects() {
   path: "/projects",
   name: "Projects",
   component: Projects
+}, {
+  path: "/users",
+  name: "Users",
+  component: Users
 } // { path: '*', component: NotFound },
 ]);
 
@@ -81648,6 +81736,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 /* harmony import */ var _modules_global_store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../modules/global/store */ "./resources/js/modules/global/store/index.js");
 /* harmony import */ var _modules_projects_store__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../modules/projects/store */ "./resources/js/modules/projects/store/index.js");
+/* harmony import */ var _modules_users_store__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../modules/users/store */ "./resources/js/modules/users/store/index.js");
+
 
 
 
@@ -81656,7 +81746,8 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__
 /* harmony default export */ __webpack_exports__["default"] = (new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
   modules: {
     global: _modules_global_store__WEBPACK_IMPORTED_MODULE_2__["default"],
-    projects: _modules_projects_store__WEBPACK_IMPORTED_MODULE_3__["default"]
+    projects: _modules_projects_store__WEBPACK_IMPORTED_MODULE_3__["default"],
+    users: _modules_users_store__WEBPACK_IMPORTED_MODULE_4__["default"]
   }
 }));
 
