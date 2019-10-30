@@ -81648,7 +81648,7 @@ function createRouter() {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 var Dashboard = function Dashboard() {
-  return __webpack_require__.e(/*! import() */ 2).then(__webpack_require__.bind(null, /*! ../modules/dashboard/index */ "./resources/js/modules/dashboard/index.vue")).then(function (m) {
+  return __webpack_require__.e(/*! import() */ 3).then(__webpack_require__.bind(null, /*! ../modules/dashboard/index */ "./resources/js/modules/dashboard/index.vue")).then(function (m) {
     return m["default"] || m;
   });
 };
@@ -81660,13 +81660,13 @@ var Projects = function Projects() {
 };
 
 var Users = function Users() {
-  return __webpack_require__.e(/*! import() */ 1).then(__webpack_require__.bind(null, /*! ../modules/users/index */ "./resources/js/modules/users/index.vue")).then(function (m) {
+  return __webpack_require__.e(/*! import() */ 2).then(__webpack_require__.bind(null, /*! ../modules/users/index */ "./resources/js/modules/users/index.vue")).then(function (m) {
     return m["default"] || m;
   });
 };
 
 var Profile = function Profile() {
-  return __webpack_require__.e(/*! import() */ 3).then(__webpack_require__.bind(null, /*! ../modules/session/profile */ "./resources/js/modules/session/profile.vue")).then(function (m) {
+  return __webpack_require__.e(/*! import() */ 1).then(__webpack_require__.bind(null, /*! ../modules/session/profile */ "./resources/js/modules/session/profile.vue")).then(function (m) {
     return m["default"] || m;
   });
 };
