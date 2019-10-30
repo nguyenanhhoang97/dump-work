@@ -5,87 +5,46 @@
     </div>
     <el-tabs v-model="activeName" @tab-click="handleClick">
       <!-- Profile -->
-      <el-tab-pane label="Profile" name="first">
+      <el-tab-pane label="Profile" name="profile">
         <!--  -->
-        <label for="usrNm" class="el-form-item__label" style="width: 0px;">Username</label>
-        <div class="el-form-item__content" style="margin-left: 120px;">
-          <el-input placeholder="Please input username" v-model="input" clearable></el-input>
-        </div>
-        <!--  -->
-        <label for="fullName" class="el-form-item__label" style="width: 80px;">Full Name</label>
-        <div class="el-form-item__content" style="margin-left: 120px;">
-          <el-input placeholder="Please input fullname" v-model="input" clearable></el-input>
-        </div>
-        <!-- -->
-        <label for="email" class="el-form-item__label" style="width: 0px;">Email</label>
-        <div class="el-form-item__content" style="margin-left: 120px;">
-          <el-input placeholder="Please input email" v-model="input" clearable></el-input>
-        </div>
-        <div class="el-form-item__content" style="margin-left: 120px;">
-          <button
-            data-v-6de003ed
-            type="button"
-            class="el-button el-button--primary el-button--small"
-          >
-            <!---->
-            <!---->
-            <span>Save</span>
-          </button>
-          <button
-            data-v-6de003ed
-            type="button"
-            class="el-button el-button--default el-button--small"
-          >
-            <!---->
-            <!---->
-            <span>Cancel</span>
-          </button>
-          <!---->
-        </div>
+        <el-form ref="form" :model="form" label-width="120px">
+          <el-form-item label="Username">
+            <el-input placeholder="Please Input Username" v-model="form.name"></el-input>
+          </el-form-item>
+          <!--  -->
+          <el-form-item label="Full Name">
+            <el-input placeholder="Please Input Full Name" v-model="form.fullname"></el-input>
+          </el-form-item>
+          <!--  -->
+          <el-form-item label="Email">
+            <el-input placeholder="Please Input Email" v-model="form.email"></el-input>
+          </el-form-item>
+          <el-button type="primary" @click="onSubmit">Save</el-button>
+          <el-button>Cancel</el-button>
+        </el-form>
       </el-tab-pane>
       <!-- Change Password -->
-      <el-tab-pane label="Change Password" name="second">
-        <!--  -->
-        <label for="oldPassword" class="el-form-item__label" style="width: 105px;">Old Password</label>
-        <div class="el-form-item__content" style="margin-left: 240px;">
-          <el-input placeholder="Please input old password" v-model="input" show-password></el-input>
-        </div>
-        <!-- -->
-        <label for="oldPassword" class="el-form-item__label" style="width: 110px;">New Password</label>
-        <div class="el-form-item__content" style="margin-left: 240px;">
-          <el-input placeholder="Please input new password" v-model="input" show-password></el-input>
-        </div>
-        <!--  -->
-        <label
-          for="confirmPassword"
-          class="el-form-item__label"
-          style="width: 160px;"
-        >Confirm New Password</label>
-        <div class="el-form-item__content" style="margin-left: 240px;">
-          <el-input placeholder="Please confirm input password" v-model="input" show-password></el-input>
-        </div>
-        <!--  -->
-        <div class="el-form-item__content" style="margin-left: 120px;">
-          <button
-            data-v-6de003ed
-            type="button"
-            class="el-button el-button--primary el-button--small"
-          >
-            <!---->
-            <!---->
-            <span>Save</span>
-          </button>
-          <button
-            data-v-6de003ed
-            type="button"
-            class="el-button el-button--default el-button--small"
-          >
-            <!---->
-            <!---->
-            <span>Cancel</span>
-          </button>
-          <!---->
-        </div>
+      <el-tab-pane label="Change Password" name="changepassword">
+        <el-form ref="form" :model="form" label-width="130px">
+          <!--  -->
+          <el-form-item label="Old Password">
+            <el-input placeholder="Please Input Password" v-model="form.oldpassword" show-password></el-input>
+          </el-form-item>
+          <!--  -->
+          <el-form-item label="New Password">
+            <el-input placeholder="Please New Password" v-model="form.newpassword" show-password></el-input>
+          </el-form-item>
+          <!--  -->
+          <el-form-item label="Confirm Password">
+            <el-input
+              placeholder="Please Input Password To Confirm"
+              v-model="form.confirmpassword"
+              show-password
+            ></el-input>
+          </el-form-item>
+          <el-button type="primary" @click="onSubmit">Save</el-button>
+          <el-button>Cancel</el-button>
+        </el-form>
       </el-tab-pane>
     </el-tabs>
   </el-card>
@@ -96,13 +55,22 @@ export default {
   data() {
     return {
       activeName: "first",
-      input: ""
+      form: {
+        name: "",
+        fullname: "",
+        email: "",
+        oldpassword: "",
+        newpassword: "",
+        confirmpassword: ""
+      }
     };
   },
-
   methods: {
-    handleClick(tab, event) {
-      console.log(tab, event);
+    onSubmit() {
+      console.log("submit!");
+    },
+    handleClick() {
+      return;
     }
   }
 };

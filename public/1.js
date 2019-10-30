@@ -61,57 +61,26 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       activeName: "first",
-      input: ""
+      form: {
+        name: "",
+        fullname: "",
+        email: "",
+        oldpassword: "",
+        newpassword: "",
+        confirmpassword: ""
+      }
     };
   },
   methods: {
-    handleClick: function handleClick(tab, event) {
-      console.log(tab, event);
+    onSubmit: function onSubmit() {
+      console.log("submit!");
+    },
+    handleClick: function handleClick() {
+      return;
     }
   }
 });
@@ -156,271 +125,171 @@ var render = function() {
           }
         },
         [
-          _c("el-tab-pane", { attrs: { label: "Profile", name: "first" } }, [
-            _c(
-              "label",
-              {
-                staticClass: "el-form-item__label",
-                staticStyle: { width: "0px" },
-                attrs: { for: "usrNm" }
-              },
-              [_vm._v("Username")]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "el-form-item__content",
-                staticStyle: { "margin-left": "120px" }
-              },
-              [
-                _c("el-input", {
-                  attrs: {
-                    placeholder: "Please input username",
-                    clearable: ""
-                  },
-                  model: {
-                    value: _vm.input,
-                    callback: function($$v) {
-                      _vm.input = $$v
-                    },
-                    expression: "input"
-                  }
-                })
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "label",
-              {
-                staticClass: "el-form-item__label",
-                staticStyle: { width: "80px" },
-                attrs: { for: "fullName" }
-              },
-              [_vm._v("Full Name")]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "el-form-item__content",
-                staticStyle: { "margin-left": "120px" }
-              },
-              [
-                _c("el-input", {
-                  attrs: {
-                    placeholder: "Please input fullname",
-                    clearable: ""
-                  },
-                  model: {
-                    value: _vm.input,
-                    callback: function($$v) {
-                      _vm.input = $$v
-                    },
-                    expression: "input"
-                  }
-                })
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "label",
-              {
-                staticClass: "el-form-item__label",
-                staticStyle: { width: "0px" },
-                attrs: { for: "email" }
-              },
-              [_vm._v("Email")]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "el-form-item__content",
-                staticStyle: { "margin-left": "120px" }
-              },
-              [
-                _c("el-input", {
-                  attrs: { placeholder: "Please input email", clearable: "" },
-                  model: {
-                    value: _vm.input,
-                    callback: function($$v) {
-                      _vm.input = $$v
-                    },
-                    expression: "input"
-                  }
-                })
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "el-form-item__content",
-                staticStyle: { "margin-left": "120px" }
-              },
-              [
-                _c(
-                  "button",
-                  {
-                    staticClass:
-                      "el-button el-button--primary el-button--small",
-                    attrs: { "data-v-6de003ed": "", type: "button" }
-                  },
-                  [_c("span", [_vm._v("Save")])]
-                ),
-                _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    staticClass:
-                      "el-button el-button--default el-button--small",
-                    attrs: { "data-v-6de003ed": "", type: "button" }
-                  },
-                  [_c("span", [_vm._v("Cancel")])]
-                )
-              ]
-            )
-          ]),
-          _vm._v(" "),
           _c(
             "el-tab-pane",
-            { attrs: { label: "Change Password", name: "second" } },
+            { attrs: { label: "Profile", name: "profile" } },
             [
               _c(
-                "label",
+                "el-form",
                 {
-                  staticClass: "el-form-item__label",
-                  staticStyle: { width: "105px" },
-                  attrs: { for: "oldPassword" }
-                },
-                [_vm._v("Old Password")]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass: "el-form-item__content",
-                  staticStyle: { "margin-left": "240px" }
-                },
-                [
-                  _c("el-input", {
-                    attrs: {
-                      placeholder: "Please input old password",
-                      "show-password": ""
-                    },
-                    model: {
-                      value: _vm.input,
-                      callback: function($$v) {
-                        _vm.input = $$v
-                      },
-                      expression: "input"
-                    }
-                  })
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "label",
-                {
-                  staticClass: "el-form-item__label",
-                  staticStyle: { width: "110px" },
-                  attrs: { for: "oldPassword" }
-                },
-                [_vm._v("New Password")]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass: "el-form-item__content",
-                  staticStyle: { "margin-left": "240px" }
-                },
-                [
-                  _c("el-input", {
-                    attrs: {
-                      placeholder: "Please input new password",
-                      "show-password": ""
-                    },
-                    model: {
-                      value: _vm.input,
-                      callback: function($$v) {
-                        _vm.input = $$v
-                      },
-                      expression: "input"
-                    }
-                  })
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "label",
-                {
-                  staticClass: "el-form-item__label",
-                  staticStyle: { width: "160px" },
-                  attrs: { for: "confirmPassword" }
-                },
-                [_vm._v("Confirm New Password")]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass: "el-form-item__content",
-                  staticStyle: { "margin-left": "240px" }
-                },
-                [
-                  _c("el-input", {
-                    attrs: {
-                      placeholder: "Please confirm input password",
-                      "show-password": ""
-                    },
-                    model: {
-                      value: _vm.input,
-                      callback: function($$v) {
-                        _vm.input = $$v
-                      },
-                      expression: "input"
-                    }
-                  })
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass: "el-form-item__content",
-                  staticStyle: { "margin-left": "120px" }
+                  ref: "form",
+                  attrs: { model: _vm.form, "label-width": "120px" }
                 },
                 [
                   _c(
-                    "button",
-                    {
-                      staticClass:
-                        "el-button el-button--primary el-button--small",
-                      attrs: { "data-v-6de003ed": "", type: "button" }
-                    },
-                    [_c("span", [_vm._v("Save")])]
+                    "el-form-item",
+                    { attrs: { label: "Username" } },
+                    [
+                      _c("el-input", {
+                        attrs: { placeholder: "Please Input Username" },
+                        model: {
+                          value: _vm.form.name,
+                          callback: function($$v) {
+                            _vm.$set(_vm.form, "name", $$v)
+                          },
+                          expression: "form.name"
+                        }
+                      })
+                    ],
+                    1
                   ),
                   _vm._v(" "),
                   _c(
-                    "button",
-                    {
-                      staticClass:
-                        "el-button el-button--default el-button--small",
-                      attrs: { "data-v-6de003ed": "", type: "button" }
-                    },
-                    [_c("span", [_vm._v("Cancel")])]
-                  )
-                ]
+                    "el-form-item",
+                    { attrs: { label: "Full Name" } },
+                    [
+                      _c("el-input", {
+                        attrs: { placeholder: "Please Input Full Name" },
+                        model: {
+                          value: _vm.form.fullname,
+                          callback: function($$v) {
+                            _vm.$set(_vm.form, "fullname", $$v)
+                          },
+                          expression: "form.fullname"
+                        }
+                      })
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "el-form-item",
+                    { attrs: { label: "Email" } },
+                    [
+                      _c("el-input", {
+                        attrs: { placeholder: "Please Input Email" },
+                        model: {
+                          value: _vm.form.email,
+                          callback: function($$v) {
+                            _vm.$set(_vm.form, "email", $$v)
+                          },
+                          expression: "form.email"
+                        }
+                      })
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "el-button",
+                    { attrs: { type: "primary" }, on: { click: _vm.onSubmit } },
+                    [_vm._v("Save")]
+                  ),
+                  _vm._v(" "),
+                  _c("el-button", [_vm._v("Cancel")])
+                ],
+                1
               )
-            ]
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "el-tab-pane",
+            { attrs: { label: "Change Password", name: "changepassword" } },
+            [
+              _c(
+                "el-form",
+                {
+                  ref: "form",
+                  attrs: { model: _vm.form, "label-width": "130px" }
+                },
+                [
+                  _c(
+                    "el-form-item",
+                    { attrs: { label: "Old Password" } },
+                    [
+                      _c("el-input", {
+                        attrs: {
+                          placeholder: "Please Input Password",
+                          "show-password": ""
+                        },
+                        model: {
+                          value: _vm.form.oldpassword,
+                          callback: function($$v) {
+                            _vm.$set(_vm.form, "oldpassword", $$v)
+                          },
+                          expression: "form.oldpassword"
+                        }
+                      })
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "el-form-item",
+                    { attrs: { label: "New Password" } },
+                    [
+                      _c("el-input", {
+                        attrs: {
+                          placeholder: "Please New Password",
+                          "show-password": ""
+                        },
+                        model: {
+                          value: _vm.form.newpassword,
+                          callback: function($$v) {
+                            _vm.$set(_vm.form, "newpassword", $$v)
+                          },
+                          expression: "form.newpassword"
+                        }
+                      })
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "el-form-item",
+                    { attrs: { label: "Confirm Password" } },
+                    [
+                      _c("el-input", {
+                        attrs: {
+                          placeholder: "Please Input Password To Confirm",
+                          "show-password": ""
+                        },
+                        model: {
+                          value: _vm.form.confirmpassword,
+                          callback: function($$v) {
+                            _vm.$set(_vm.form, "confirmpassword", $$v)
+                          },
+                          expression: "form.confirmpassword"
+                        }
+                      })
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "el-button",
+                    { attrs: { type: "primary" }, on: { click: _vm.onSubmit } },
+                    [_vm._v("Save")]
+                  ),
+                  _vm._v(" "),
+                  _c("el-button", [_vm._v("Cancel")])
+                ],
+                1
+              )
+            ],
+            1
           )
         ],
         1
