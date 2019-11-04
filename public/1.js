@@ -66,18 +66,18 @@ __webpack_require__.r(__webpack_exports__);
     return {
       activeName: "first",
       form: {
-        name: "",
-        fullname: "",
+        userName: "",
+        fullName: "",
         email: "",
-        oldpassword: "",
-        newpassword: "",
-        confirmpassword: ""
+        oldPassword: "",
+        newPassword: "",
+        confirmPassword: ""
       }
     };
   },
   methods: {
     onSubmit: function onSubmit() {
-      console.log("submit!");
+      return;
     },
     handleClick: function handleClick() {
       return;
@@ -138,16 +138,16 @@ var render = function() {
                 [
                   _c(
                     "el-form-item",
-                    { attrs: { label: "Username" } },
+                    { attrs: { label: "Username", name: "userName" } },
                     [
                       _c("el-input", {
                         attrs: { placeholder: "Please Input Username" },
                         model: {
-                          value: _vm.form.name,
+                          value: _vm.form.usrerName,
                           callback: function($$v) {
-                            _vm.$set(_vm.form, "name", $$v)
+                            _vm.$set(_vm.form, "usrerName", $$v)
                           },
-                          expression: "form.name"
+                          expression: "form.usrerName"
                         }
                       })
                     ],
@@ -156,16 +156,16 @@ var render = function() {
                   _vm._v(" "),
                   _c(
                     "el-form-item",
-                    { attrs: { label: "Full Name" } },
+                    { attrs: { label: "Full Name", name: "fullName" } },
                     [
                       _c("el-input", {
                         attrs: { placeholder: "Please Input Full Name" },
                         model: {
-                          value: _vm.form.fullname,
+                          value: _vm.form.fullName,
                           callback: function($$v) {
-                            _vm.$set(_vm.form, "fullname", $$v)
+                            _vm.$set(_vm.form, "fullName", $$v)
                           },
-                          expression: "form.fullname"
+                          expression: "form.fullName"
                         }
                       })
                     ],
@@ -177,7 +177,10 @@ var render = function() {
                     { attrs: { label: "Email" } },
                     [
                       _c("el-input", {
-                        attrs: { placeholder: "Please Input Email" },
+                        attrs: {
+                          placeholder: "Please Input Email ",
+                          name: "email"
+                        },
                         model: {
                           value: _vm.form.email,
                           callback: function($$v) {
@@ -206,7 +209,7 @@ var render = function() {
           _vm._v(" "),
           _c(
             "el-tab-pane",
-            { attrs: { label: "Change Password", name: "changepassword" } },
+            { attrs: { label: "Change Password", name: "changePassword" } },
             [
               _c(
                 "el-form",
@@ -217,7 +220,7 @@ var render = function() {
                 [
                   _c(
                     "el-form-item",
-                    { attrs: { label: "Old Password" } },
+                    { attrs: { label: "Old Password", name: "oldPassword" } },
                     [
                       _c("el-input", {
                         attrs: {
@@ -225,11 +228,11 @@ var render = function() {
                           "show-password": ""
                         },
                         model: {
-                          value: _vm.form.oldpassword,
+                          value: _vm.form.oldPassword,
                           callback: function($$v) {
-                            _vm.$set(_vm.form, "oldpassword", $$v)
+                            _vm.$set(_vm.form, "oldPassword", $$v)
                           },
-                          expression: "form.oldpassword"
+                          expression: "form.oldPassword"
                         }
                       })
                     ],
@@ -238,7 +241,7 @@ var render = function() {
                   _vm._v(" "),
                   _c(
                     "el-form-item",
-                    { attrs: { label: "New Password" } },
+                    { attrs: { label: "New Password", name: "newPassword" } },
                     [
                       _c("el-input", {
                         attrs: {
@@ -246,11 +249,11 @@ var render = function() {
                           "show-password": ""
                         },
                         model: {
-                          value: _vm.form.newpassword,
+                          value: _vm.form.newPassword,
                           callback: function($$v) {
-                            _vm.$set(_vm.form, "newpassword", $$v)
+                            _vm.$set(_vm.form, "newPassword", $$v)
                           },
-                          expression: "form.newpassword"
+                          expression: "form.newPassword"
                         }
                       })
                     ],
@@ -259,7 +262,12 @@ var render = function() {
                   _vm._v(" "),
                   _c(
                     "el-form-item",
-                    { attrs: { label: "Confirm Password" } },
+                    {
+                      attrs: {
+                        label: "Confirm Password",
+                        name: "confirmPassword"
+                      }
+                    },
                     [
                       _c("el-input", {
                         attrs: {
@@ -267,11 +275,11 @@ var render = function() {
                           "show-password": ""
                         },
                         model: {
-                          value: _vm.form.confirmpassword,
+                          value: _vm.form.confirmPassword,
                           callback: function($$v) {
-                            _vm.$set(_vm.form, "confirmpassword", $$v)
+                            _vm.$set(_vm.form, "confirmPassword", $$v)
                           },
-                          expression: "form.confirmpassword"
+                          expression: "form.confirmPassword"
                         }
                       })
                     ],
