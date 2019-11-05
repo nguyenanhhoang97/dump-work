@@ -54,7 +54,7 @@
 export default {
   data() {
     return {
-      activeName: "Profile",
+      activeName: "profile",
       form: {
         userName: "",
         fullName: "",
