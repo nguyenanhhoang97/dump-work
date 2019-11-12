@@ -30,7 +30,7 @@ export default {
       return [
         {
           icon: 'user',
-          name: this.$t('profile'),
+          name: this.$t('button.profile'),
           route: 'settings.profile'
         },
         {
