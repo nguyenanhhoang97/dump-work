@@ -2,6 +2,10 @@ function page (path) {
   return () => import(/* webpackChunkName: '' */ `~/pages/${path}`).then(m => m.default || m)
 }
 
+function module (path) {
+  return () => import(/* webpackChunkName: '' */ `~/modules/${path}`).then(m => m.default || m)
+}
+
 export default [
   { path: '/', name: 'welcome', component: page('welcome.vue') },
 
@@ -13,6 +17,7 @@ export default [
   { path: '/email/resend', name: 'verification.resend', component: page('auth/verification/resend.vue') },
 
   { path: '/home', name: 'home', component: page('home.vue') },
+  { path: '/dashboard', name: 'dashboard', component: module('dashboard/index.vue') },
   { path: '/settings',
     component: page('settings/index.vue'),
     children: [
