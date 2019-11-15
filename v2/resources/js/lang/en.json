@@ -38,6 +38,60 @@
   "verify_email_address": "We sent you an email with an the verification link.",
   "button": {
     "profile": "Profile",
-    "login": "Login"
+    "change_password": "Change Password",
+    "login": "Login",
+    "register": "Register",
+    "remember_me": "Remember Me",
+    "forgot_your_password": "Forgot Your Password",
+    "setting": "Setting",
+    "logout": "Logout",
+    "update": "Update",
+    "password": "Password",
+    "save": "Save",
+    "cancel": "Cancel",
+    "edit": "Edit",
+    "confirm": "Confirm",
+    "delete": "Delete",
+    "new_project": "New Project",
+    "create_user": "Create User"
+  },
+
+  "button_dropdown_project": {
+    "action1": "action1",
+    "action2": "action2",
+    "action3": "action3"
+  },
+
+  "button_dropdown_profile": {
+    "profile": "Profile",
+    "logout": "Logout"
+  },
+
+  "menu": {
+    "dashboard": "DashBoard"
+  },
+
+  "label": {
+    "login": "Login",
+    "password": "Password",
+    "email": "Email",
+    "old_password": "Old Password",
+    "new_password": "New Password",
+    "confirm_password": "Confirm Password",
+    "warning": "Warning",
+    "create_new_project": "Create New Project",
+    "user_name": "User Name",
+    "user_list": "User List",
+    "you_want_to_delete": "You Want To Delete "
+  },
+
+  "text": {
+    "please_input_username": "Please Input Username",
+    "please_input_full_name": "Please Input Full Name",
+    "please_input_email": "Please Input Email",
+    "please_input_password": "Please Input Password",
+    "please_input_new_password": "Please Input New Password",
+    "please_input_password_to_confirm": "Please Input Password To Confirm"
+
   }
 }
