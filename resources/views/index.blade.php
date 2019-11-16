@@ -1,20 +1,36 @@
+@php
+$config = [
+'appName' => config('app.name'),
+'locale' => $locale = app()->getLocale(),
+'locales' => config('app.locales'),
+'githubAuth' => config('services.github.client_id'),
+];
+@endphp
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ app()->getLocale() }}">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>dump-work</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>{{ config('app.name') }}</title>
+
+  <!-- <link rel="stylesheet" href="{{ mix('dist/css/app.css') }}"> -->
   <link rel="stylesheet" href="css/app.css" />
 </head>
-
 <body class="sidebar-mini white-content">
   <div id="app">
     <app></app>
   </div>
 
-  <script src="{{ mix('js/app.js') }}"></script>
+  {{-- Global configuration object --}}
+  <script>
+    window.config = @json($config);
+  </script>
+
+  {{-- Load the application scripts --}}
+
+  <script src="{{ mix('dist/js/app.js') }}"></script>
 </body>
 
 </html>

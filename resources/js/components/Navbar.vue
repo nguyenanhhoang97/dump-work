@@ -10,8 +10,12 @@
               data-original-title="Sidebar toggle"
               data-placement="right"
             >
-              <i class="tim-icons icon-align-center visible-on-sidebar-regular"></i>
-              <i class="tim-icons icon-bullet-list-67 visible-on-sidebar-mini"></i>
+              <i
+                class="tim-icons icon-align-center visible-on-sidebar-regular"
+              ></i>
+              <i
+                class="tim-icons icon-bullet-list-67 visible-on-sidebar-mini"
+              ></i>
             </button>
           </div>
           <div class="navbar-toggle d-inline">
@@ -21,7 +25,9 @@
               <span class="navbar-toggler-bar bar3"></span>
             </button>
           </div>
-          <a class="navbar-brand" href="javascript:void(0)">{{ currentRoute }}</a>
+          <a class="navbar-brand" href="javascript:void(0)">{{
+            currentRoute
+          }}</a>
         </div>
         <button
           class="navbar-toggler"
@@ -37,55 +43,18 @@
         </button>
         <div class="collapse navbar-collapse" id="navigation">
           <ul class="navbar-nav ml-auto">
-            <!-- <li class="search-bar input-group">
-              <button
-                class="btn btn-link"
-                id="search-button"
-                data-toggle="modal"
-                data-target="#searchModal"
-              >
-                <i class="tim-icons icon-zoom-split"></i>
-                <span class="d-lg-none d-md-block">Search</span>
-              </button>
-            </li>
-            <li class="dropdown nav-item">
-              <a href="javascript:void(0)" class="dropdown-toggle nav-link" data-toggle="dropdown">
-                <div class="notification d-none d-lg-block d-xl-block"></div>
-                <i class="tim-icons icon-sound-wave"></i>
-                <p class="d-lg-none">Notifications</p>
-              </a>
-              <ul class="dropdown-menu dropdown-menu-right dropdown-navbar">
-                <li class="nav-link">
-                  <a href="#" class="nav-item dropdown-item">Mike John responded to your email</a>
-                </li>
-                <li class="nav-link">
-                  <a href="javascript:void(0)" class="nav-item dropdown-item">You have 5 more tasks</a>
-                </li>
-                <li class="nav-link">
-                  <a
-                    href="javascript:void(0)"
-                    class="nav-item dropdown-item"
-                  >Your friend Michael is in town</a>
-                </li>
-                <li class="nav-link">
-                  <a href="javascript:void(0)" class="nav-item dropdown-item">Another notification</a>
-                </li>
-                <li class="nav-link">
-                  <a href="javascript:void(0)" class="nav-item dropdown-item">Another one</a>
-                </li>
-              </ul>
-            </li>-->
             <el-dropdown>
-              <span class="el-dropdown-link">
-                <div class="photo">
-                  <img src="../../assets/img/mike.jpg" alt="Profile Photo" />
-                </div>
-              </span>
+              <span class="el-dropdown-link"> Hi, {{ user.name }} <i class="el-icon-arrow-down el-icon--right"></i> </span>
               <el-dropdown-menu slot="dropdown">
-                <el-dropdown-item @click.native="$router.push({ name: 'Profile'})">
-                  Profile
-                </el-dropdown-item>
-                <el-dropdown-item divided>Log Out</el-dropdown-item>
+                <el-dropdown-item
+                  @click.native="$router.push({ name: 'profile' })"
+                  >Profile</el-dropdown-item
+                >
+                <el-dropdown-item
+                  @click.native="$router.push({ name: 'settings.profile' })"
+                  >Setting</el-dropdown-item
+                >
+                <el-dropdown-item @click.native="logout" divided>Log Out</el-dropdown-item>
               </el-dropdown-menu>
             </el-dropdown>
             <li class="separator d-lg-none"></li>
@@ -104,8 +73,18 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="SEARCH" />
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <input
+              type="text"
+              class="form-control"
+              id="inlineFormInputGroup"
+              placeholder="SEARCH"
+            />
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
               <i class="tim-icons icon-simple-remove"></i>
             </button>
           </div>
@@ -116,18 +95,37 @@
 </template>
 
 <script>
-import { mapActions, mapState } from "vuex";
-
+import { mapGetters } from "vuex";
+import LocaleDropdown from "./LocaleDropdown";
 export default {
+  components: {
+    LocaleDropdown
+  },
+  data: () => ({
+    appName: window.config.appName
+  }),
   computed: {
-    ...mapState("global", ["loading"]),
+    ...mapGetters("auth", ["user"]),
 
     currentRoute() {
       return this.$route.name;
+    }
+  },
+  methods: {
+    async logout() {
+      // Log out the user.
+      await this.$store.dispatch("auth/logout");
+      // Redirect to login.
+      this.$router.push({ name: "login" });
     }
   }
 };
 </script>
 
-<style>
+<style scoped>
+.profile-photo {
+  width: 2rem;
+  height: 2rem;
+  margin: -0.375rem 0;
+}
 </style>
