@@ -41,10 +41,20 @@
           <span class="navbar-toggler-bar navbar-kebab"></span>
           <span class="navbar-toggler-bar navbar-kebab"></span>
         </button>
+        <ul class="navbar-nav">
+          <locale-dropdown />
+          <!-- <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li> -->
+        </ul>
+
         <div class="collapse navbar-collapse" id="navigation">
           <ul class="navbar-nav ml-auto">
             <el-dropdown>
-              <span class="el-dropdown-link"> Hi, {{ user.name }} <i class="el-icon-arrow-down el-icon--right"></i> </span>
+              <span class="el-dropdown-link">
+                Hi, {{ user.name }}
+                <i class="el-icon-arrow-down el-icon--right"></i>
+              </span>
               <el-dropdown-menu slot="dropdown">
                 <el-dropdown-item
                   @click.native="$router.push({ name: 'profile' })"
@@ -54,7 +64,9 @@
                   @click.native="$router.push({ name: 'settings.profile' })"
                   >Setting</el-dropdown-item
                 >
-                <el-dropdown-item @click.native="logout" divided>Log Out</el-dropdown-item>
+                <el-dropdown-item @click.native="logout" divided
+                  >Log Out</el-dropdown-item
+                >
               </el-dropdown-menu>
             </el-dropdown>
             <li class="separator d-lg-none"></li>
@@ -62,35 +74,6 @@
         </div>
       </div>
     </nav>
-    <div
-      class="modal modal-search fade"
-      id="searchModal"
-      tabindex="-1"
-      role="dialog"
-      aria-labelledby="searchModal"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <input
-              type="text"
-              class="form-control"
-              id="inlineFormInputGroup"
-              placeholder="SEARCH"
-            />
-            <button
-              type="button"
-              class="close"
-              data-dismiss="modal"
-              aria-label="Close"
-            >
-              <i class="tim-icons icon-simple-remove"></i>
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 </template>
 
