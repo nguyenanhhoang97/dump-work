@@ -1,34 +1,66 @@
 <template>
-  <div class="wrapper">
-    <sidebar />
-    <div class="main-panel" data="green">
-      <navbar />
-      <!-- Content -->
-      <div class="content">
-        <router-view></router-view>
-      </div>
-      <app-footer />
-    </div>
+  <div id="app">
+    <loading ref="loading" />
+
+    <transition name="page" mode="out-in">
+      <component :is="layout" v-if="layout" />
+    </transition>
   </div>
 </template>
 
-<style>
-</style>
-
-
 <script>
-import { mapState, mapGetters, mapActions } from "vuex";
-import Navbar from "./Navbar";
-import Sidebar from "./Sidebar";
-import AppFooter from "./AppFooter";
+import Loading from './Loading'
+
+// Load layout components dynamically.
+const requireContext = require.context('~/layouts', false, /.*\.vue$/)
+
+const layouts = requireContext.keys()
+  .map(file =>
+    [file.replace(/(^.\/)|(\.vue$)/g, ''), requireContext(file)]
+  )
+  .reduce((components, [name, component]) => {
+    components[name] = component.default || component
+    return components
+  }, {})
 
 export default {
-  name: "App",
+  el: '#app',
 
   components: {
-    Navbar,
-    Sidebar,
-    AppFooter
+    Loading
+  },
+
+  data: () => ({
+    layout: null,
+    defaultLayout: 'default'
+  }),
+
+  metaInfo () {
+    const { appName } = window.config
+
+    return {
+      title: appName,
+      titleTemplate: `%s · ${appName}`
+    }
+  },
+
+  mounted () {
+    this.$loading = this.$refs.loading
+  },
+
+  methods: {
+    /**
+     * Set the application layout.
+     *
+     * @param {String} layout
+     */
+    setLayout (layout) {
+      if (!layout || !layouts[layout]) {
+        layout = this.defaultLayout
+      }
+
+      this.layout = layouts[layout]
+    }
   }
-};
+}
 </script>

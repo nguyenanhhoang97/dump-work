@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\ProjectController;
 use Illuminate\Http\Request;
 
 /*
@@ -14,24 +13,33 @@ use Illuminate\Http\Request;
 |
 */
 
-// Route::middleware('auth:api')->get('/user', function (Request $request) {
-//     return $request->user();
-// });
+Route::group(['middleware' => 'auth:api'], function () {
+    Route::post('logout', 'Auth\LoginController@logout');
 
-Route::prefix('auth')->group(function () {
-    Route::post('register', 'AuthController@register');
-    Route::post('login', 'AuthController@login');
-    Route::get('refresh', 'AuthController@refresh');
-    Route::group(['middleware' => 'auth:api'], function(){
-        Route::get('/user', function (Request $request) {
-            return $request->user();
-        });
+    Route::get('/user', function (Request $request) {
+        return $request->user();
     });
+
+    Route::patch('settings/profile', 'Settings\ProfileController@update');
+    Route::patch('settings/password', 'Settings\PasswordController@update');
 });
 
-Route::get('/project/list', 'ProjectController@getProjectList');
-Route::get('/project/detail', 'ProjectController@getProjectById');
-Route::post('/project/update', 'ProjectController@updateProjectById');
-Route::get('/project/delete', 'ProjectController@deleteProjectById');
-Route::post('/project/create', 'ProjectController@createProject');
+Route::group(['middleware' => 'guest:api'], function () {
+    Route::post('login', 'Auth\LoginController@login');
+    Route::post('register', 'Auth\RegisterController@register');
 
+    Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail');
+    Route::post('password/reset', 'Auth\ResetPasswordController@reset');
+
+    Route::post('email/verify/{user}', 'Auth\VerificationController@verify')->name('verification.verify');
+    Route::post('email/resend', 'Auth\VerificationController@resend');
+
+    Route::post('oauth/{driver}', 'Auth\OAuthController@redirectToProvider');
+    Route::get('oauth/{driver}/callback', 'Auth\OAuthController@handleProviderCallback')->name('oauth.callback');
+
+    Route::get('/project/list', 'ProjectController@getProjectList');
+    Route::get('/project/detail', 'ProjectController@getProjectById');
+    Route::post('/project/update', 'ProjectController@updateProjectById');
+    Route::get('/project/delete', 'ProjectController@deleteProjectById');
+    Route::post('/project/create', 'ProjectController@createProject');
+});

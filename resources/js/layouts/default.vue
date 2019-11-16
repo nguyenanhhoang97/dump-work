@@ -1,21 +1,28 @@
 <template>
   <div class="wrapper">
-    <navbar />
     <sidebar />
-    <child />
-    <footer />
+    <div class="main-panel" data="green">
+      <navbar />
+      <!-- Content -->
+      <div class="content">
+        <router-view></router-view>
+      </div>
+      <footer />
+    </div>
   </div>
 </template>
 
 <script>
-import Navbar from "../components/Navbar";
-import SideBar from "../components/SideBar";
-import Footer from "../components/RightBar";
+import Navbar from "~/components/Navbar";
+import Sidebar from "~/components/Sidebar";
+import Footer from "~/components/Footer";
 
 export default {
+  name: 'MainLayout',
+
   components: {
     Navbar,
-    SideBar,
+    Sidebar,
     Footer
   }
 };

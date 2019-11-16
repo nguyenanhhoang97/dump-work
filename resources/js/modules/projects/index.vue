@@ -7,7 +7,12 @@
           <div class="col col-lg-8 m-auto col-md-8 col-sm-12 col-12">
             <div class="main-header-content">
               <h1>Welcome to dump-work!</h1>
-              <p>Welcome to dump-work! This is the testing message. Blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah.</p>
+              <p>
+                Welcome to dump-work! This is the testing message. Blah blah
+                blah blah blah blah blah blah blah blah blah blah blah blah blah
+                blah blah blah blah blah blah blah blah blah blah blah blah blah
+                blah blah blah blah blah.
+              </p>
             </div>
           </div>
         </div>
@@ -33,6 +38,8 @@
 import CreateProjectCard from "./CreateProjectCard/index.vue";
 import ProjectCard from "./ProjectCard/index.vue";
 export default {
+  layout: "default",
+
   components: {
     CreateProjectCard,
     ProjectCard
