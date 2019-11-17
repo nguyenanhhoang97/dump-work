@@ -6,44 +6,53 @@
     <el-tabs v-model="activeName" @tab-click="handleClick">
       <!-- Profile -->
       <el-tab-pane label="Profile" name="profile">
-        <!--  -->
-        <el-form ref="form" :model="form" label-width="120px">
-          <el-form-item label="Username" name="userName">
-            <el-input placeholder="Please Input Username" v-model="form.usrerName"></el-input>
+        <el-form
+          ref="profileForm"
+          :model="profileForm"
+          :rules="profileFormRules"
+          :label-width="labelWidth"
+          label-position="left"
+        >
+          <el-form-item label="Fullname" prop="fullName">
+            <el-input
+              placeholder="Please Input Full Name"
+              v-model="profileForm.name"
+            ></el-input>
           </el-form-item>
-          <!--  -->
-          <el-form-item label="Full Name" name="fullName">
-            <el-input placeholder="Please Input Full Name" v-model="form.fullName"></el-input>
-          </el-form-item>
-          <!--  -->
-          <el-form-item label="Email">
-            <el-input placeholder="Please Input Email "  name="email" v-model="form.email"></el-input>
+          <el-form-item label="Email" prop="email">
+            <el-input
+              placeholder="Please Input Email "
+              name="email"
+              v-model="profileForm.email"
+            ></el-input>
           </el-form-item>
           <el-button type="primary" @click="onSubmit">Save</el-button>
-          <el-button>Cancel</el-button>
         </el-form>
       </el-tab-pane>
-      <!-- Cha nge Password -->
+      <!-- Change Password -->
       <el-tab-pane label="Change Password" name="changePassword">
-        <el-form ref="form" :model="form" label-width="130px">
-          <!--  -->
-          <el-form-item label="Old Password" name="oldPassword" >
-            <el-input placeholder="Please Input Password" v-model="form.oldPassword" show-password></el-input>
+        <el-form
+          ref="changePassForm"
+          :model="changePassForm"
+          :rules="changePassFormRules"
+          :label-width="labelWidth"
+          label-position="left"
+        >
+          <el-form-item label="New Password" prop="password">
+            <el-input
+              placeholder="Please New Password"
+              v-model="changePassForm.password"
+              show-password
+            ></el-input>
           </el-form-item>
-          <!--  -->
-          <el-form-item label="New Password" name="newPassword">
-            <el-input placeholder="Please New Password" v-model="form.newPassword" show-password></el-input>
-          </el-form-item>
-          <!--  -->
-          <el-form-item label="Confirm Password" name="confirmPassword">
+          <el-form-item label="Confirm Password" prop="confirmPass">
             <el-input
               placeholder="Please Input Password To Confirm"
-              v-model="form.confirmPassword"
+              v-model="changePassForm.confirmPass"
               show-password
             ></el-input>
           </el-form-item>
           <el-button type="primary" @click="onSubmit">Save</el-button>
-          <el-button>Cancel</el-button>
         </el-form>
       </el-tab-pane>
     </el-tabs>
@@ -51,25 +60,100 @@
 </template>
 
 <script>
+import { mapActions, mapState, mapGetters } from "vuex";
 export default {
-  middleware: 'auth',
+  middleware: "auth",
+
   data() {
+    var validatePass = (rule, value, callback) => {
+      if (value === "") {
+        callback(new Error("Please input the password"));
+      } else {
+        if (this.ruleForm.checkPass !== "") {
+          this.$refs.ruleForm.validateField("checkPass");
+        }
+        callback();
+      }
+    };
+    var validatePass2 = (rule, value, callback) => {
+      if (value === "") {
+        callback(new Error("Please input the password again"));
+      } else if (value !== this.ruleForm.pass) {
+        callback(new Error("Two inputs don't match!"));
+      } else {
+        callback();
+      }
+    };
     return {
       activeName: "profile",
-      form: {
-        userName: "",
-        fullName: "",
-        email: "",
-        oldPassword: "",
-        newPassword: "",
-        confirmPassword: ""
+      labelWidth: "200px",
+      profileForm: {
+        name: "",
+        email: ""
+      },
+      changePassForm: {
+        password: "",
+        confirmPass: ""
+      },
+      profileFormRules: {
+        fullName: [
+          {
+            required: true,
+            message: "Please input fullname",
+            trigger: "blur"
+          }
+        ],
+        email: [
+          {
+            required: true,
+            message: "Please input email address",
+            trigger: "blur"
+          },
+          {
+            type: "email",
+            message: "Please input correct email address",
+            trigger: ["blur", "change"]
+          }
+        ]
+      },
+      changePassFormRules: {
+        password: [
+          {
+            required: true
+          },
+          { validator: validatePass, trigger: "blur" }
+        ],
+        confirmPass: [
+          {
+            required: true
+          },
+          { validator: validatePass2, trigger: "blur" }
+        ]
       }
     };
   },
+
+  computed: {
+    ...mapGetters("auth", ["user"])
+  },
+
+  created() {
+    this.fillDataToProfileForm();
+  },
+
   methods: {
+    ...mapActions("session", ["updateProfile", "updatePassword"]),
+
+    fillDataToProfileForm() {
+      if (this.user) {
+        this.profileForm = { ...this.user };
+      }
+    },
+
     onSubmit() {
       return;
     },
+
     handleClick() {
       return;
     }
@@ -77,5 +161,4 @@ export default {
 };
 </script>
 
-<style>
-</style>
+<style></style>

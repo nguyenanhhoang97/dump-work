@@ -7,30 +7,34 @@ $config = [
 ];
 @endphp
 <!DOCTYPE html>
-<html lang="{{ app()->getLocale() }}">
+<div lang="{{ app()->getLocale() }}">
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <title>{{ config('app.name') }}</title>
+    <title>{{ config('app.name') }}</title>
 
-  <!-- <link rel="stylesheet" href="{{ mix('dist/css/app.css') }}"> -->
-  <link rel="stylesheet" href="css/app.css" />
-</head>
-<body class="sidebar-mini white-content">
-  <div id="app">
-    <app></app>
-  </div>
+    <!-- <link rel="stylesheet" href="{{ mix('dist/css/app.css') }}"> -->
+    <link rel="stylesheet" href="css/app.css" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+  </head>
 
-  {{-- Global configuration object --}}
-  <script>
-    window.config = @json($config);
-  </script>
+  <body class="sidebar-mini white-content">
+    <v-app id="app">
+      <app></app>
+</div>
 
-  {{-- Load the application scripts --}}
+{{-- Global configuration object --}}
+<script>
+  window.config = @json($config);
+</script>
 
-  <script src="{{ mix('dist/js/app.js') }}"></script>
+{{-- Load the application scripts --}}
+
+<script src="{{ mix('dist/js/app.js') }}"></script>
 </body>
 
 </html>
