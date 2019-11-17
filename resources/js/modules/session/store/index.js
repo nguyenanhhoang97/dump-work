@@ -1,4 +1,4 @@
-import { SET_PROFILE } from "./types";
+// import { SET_PROFILE } from "./types";
 import * as getters from "./getters";
 import * as actions from "./actions";
 
@@ -7,9 +7,9 @@ const state = {
 };
 
 const mutations = {
-  [SET_PROFILE](state, profile) {
-    state.profile = profile;
-  }
+  // [SET_PROFILE](state, profile) {
+  //   state.profile = profile;
+  // }
 };
 
 export default {
