@@ -20,8 +20,16 @@ Route::group(['middleware' => 'auth:api'], function () {
         return $request->user();
     });
 
+    // Profile
     Route::patch('settings/profile', 'Settings\ProfileController@update');
     Route::patch('settings/password', 'Settings\PasswordController@update');
+
+    // Projects
+    Route::get('/project/list', 'ProjectController@getProjectList');
+    Route::get('/project/detail', 'ProjectController@getProjectById');
+    Route::post('/project/update', 'ProjectController@updateProjectById');
+    Route::get('/project/delete', 'ProjectController@deleteProjectById');
+    Route::post('/project/create', 'ProjectController@createProject');
 });
 
 Route::group(['middleware' => 'guest:api'], function () {
@@ -36,10 +44,4 @@ Route::group(['middleware' => 'guest:api'], function () {
 
     Route::post('oauth/{driver}', 'Auth\OAuthController@redirectToProvider');
     Route::get('oauth/{driver}/callback', 'Auth\OAuthController@handleProviderCallback')->name('oauth.callback');
-
-    Route::get('/project/list', 'ProjectController@getProjectList');
-    Route::get('/project/detail', 'ProjectController@getProjectById');
-    Route::post('/project/update', 'ProjectController@updateProjectById');
-    Route::get('/project/delete', 'ProjectController@deleteProjectById');
-    Route::post('/project/create', 'ProjectController@createProject');
 });

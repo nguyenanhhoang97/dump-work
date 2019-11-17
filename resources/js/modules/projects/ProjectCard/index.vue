@@ -5,7 +5,7 @@
 
       <div class="friend-item friend-groups">
         <div class="friend-item-content">
-          <div class="more">
+          <!-- <div class="more">
             <el-dropdown>
               <span class="el-dropdown-link">
                 <i class="el-icon-arrow-down el-icon--right"></i>
@@ -18,14 +18,15 @@
                 <el-dropdown-item divided>Action 5</el-dropdown-item>
               </el-dropdown-menu>
             </el-dropdown>
-          </div>
+          </div> -->
           <div class="friend-avatar">
             <div class="author-thumb">
-              <img src="http://html.crumina.net/html-olympus/img/friend-group1.png" alt="photo" />
+              <!-- <img src="http://html.crumina.net/html-olympus/img/friend-group1.png" alt="photo" /> -->
+              <el-avatar :size="120"> {{ getCharImg(project.project_name) }} </el-avatar>
             </div>
             <div class="author-content">
-              <a href="#" class="h5 author-name">dump-work</a>
-              <div class="country">Tracing our projects.</div>
+              <a href="#" class="h5 author-name">{{ project.project_name }}</a>
+              <div class="country">{{ project.project_description }}</div>
             </div>
           </div>
 
@@ -42,10 +43,26 @@
 </template>
 
 <script>
-export default {};
+export default {
+  props: {
+    project: { type: Object, default: null },
+  },
+
+  methods: {
+    getCharImg(content) {
+      return (content.match(/\b(\w)/g)).join('');
+    }
+  }
+};
 </script>
 
 <style lang="scss" scoped>
+.el-avatar {
+  font-size: 40px;
+  font-weight: bold;
+  background: linear-gradient(0deg, #0098f0 0%, #00f2c3 100%);
+}
+
 .project-card {
   .ui-block {
     background-color: #fff;
@@ -118,6 +135,10 @@ export default {};
           position: relative;
         }
       }
+    }
+
+    .el-avatar .el-avatar--circle {
+      font-size: xx-large;
     }
   }
 }

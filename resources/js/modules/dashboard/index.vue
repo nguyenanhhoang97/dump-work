@@ -1,12 +1,13 @@
 <template>
-  <p>This is the dashboard</p>
+  <div class="dashboard">
+    <p>This is the dashboard</p>
+  </div>
 </template>
 
 <script>
 export default {
-  middleware: 'auth',
+  middleware: "auth"
 };
 </script>
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>

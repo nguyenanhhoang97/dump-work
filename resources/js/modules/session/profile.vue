@@ -62,7 +62,7 @@
 </template>
 
 <script>
-import { mapActions, mapState, mapGetters } from "vuex";
+import { mapActions, mapState } from "vuex";
 export default {
   middleware: "auth",
 
@@ -136,7 +136,6 @@ export default {
   },
 
   computed: {
-    // ...mapGetters("auth", ["user"]),
     ...mapState("auth", ["user"])
   },
 
