@@ -60,10 +60,10 @@
                   @click.native="$router.push({ name: 'profile' })"
                   >Profile</el-dropdown-item
                 >
-                <el-dropdown-item
+                <!-- <el-dropdown-item
                   @click.native="$router.push({ name: 'settings.profile' })"
                   >Setting</el-dropdown-item
-                >
+                > -->
                 <el-dropdown-item @click.native="logout" divided
                   >Log Out</el-dropdown-item
                 >

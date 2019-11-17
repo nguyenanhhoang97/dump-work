@@ -27,23 +27,51 @@
       <el-col :span="4">
         <create-project-card></create-project-card>
       </el-col>
-      <el-col :span="4">
-        <project-card></project-card>
+      <el-col :span="4" v-for="item in projects" :key="item.id">
+        <project-card :project="item"></project-card>
       </el-col>
     </el-row>
   </div>
 </template>
 
 <script>
+import { mapActions, mapState } from "vuex";
 import CreateProjectCard from "./CreateProjectCard/index.vue";
 import ProjectCard from "./ProjectCard/index.vue";
+
 export default {
-  middleware: 'auth',
+  middleware: "auth",
   layout: "default",
 
   components: {
     CreateProjectCard,
     ProjectCard
+  },
+
+  data() {
+    return {
+      listFilter: {
+        pageIndex: 0,
+        pageSize: 1000,
+        search: ""
+      }
+    };
+  },
+
+  computed: {
+    ...mapState("projects", ["projects"])
+  },
+
+  created() {
+    this.initData();
+  },
+
+  methods: {
+    ...mapActions("projects", ["getProjects"]),
+
+    initData() {
+      this.getProjects({ ...this.listFilter });
+    }
   }
 };
 </script>

@@ -17,9 +17,9 @@ class Project extends Model
         $offset = $pageIndex * $pageSize;
         return DB::table('projects')
             ->where('is_deleted', false)
-            ->where('project_name', 'like', '%' . $search . '%')
-            ->offset($offset)
-            ->limit($pageSize)
+            // ->where('project_name', 'like', '%' . $search . '%')
+            // ->offset($offset)
+            // ->limit($pageSize)
             ->get();
     }
     public static function getProjectById($id)

@@ -1,4 +1,3 @@
-import { UPDATE_PROFILE, UPDATE_PASSWORD } from "./types";
 import store from "~/store";
 import axios from "axios";
 
