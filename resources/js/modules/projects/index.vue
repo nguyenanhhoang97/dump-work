@@ -38,6 +38,7 @@
 import CreateProjectCard from "./CreateProjectCard/index.vue";
 import ProjectCard from "./ProjectCard/index.vue";
 export default {
+  middleware: 'auth',
   layout: "default",
 
   components: {
