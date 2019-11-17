@@ -13,7 +13,7 @@
           :label-width="labelWidth"
           label-position="left"
         >
-          <el-form-item label="Fullname" prop="fullName">
+          <el-form-item label="Fullname" prop="name">
             <el-input
               placeholder="Please Input Full Name"
               v-model="profileForm.name"
@@ -26,7 +26,9 @@
               v-model="profileForm.email"
             ></el-input>
           </el-form-item>
-          <el-button type="primary" @click="onSubmit">Save</el-button>
+          <el-button type="primary" @click.native="handleSaveProfile"
+            >Save</el-button
+          >
         </el-form>
       </el-tab-pane>
       <!-- Change Password -->
@@ -52,7 +54,7 @@
               show-password
             ></el-input>
           </el-form-item>
-          <el-button type="primary" @click="onSubmit">Save</el-button>
+          <el-button type="primary" @click="handleSavePassword">Save</el-button>
         </el-form>
       </el-tab-pane>
     </el-tabs>
@@ -69,8 +71,8 @@ export default {
       if (value === "") {
         callback(new Error("Please input the password"));
       } else {
-        if (this.ruleForm.checkPass !== "") {
-          this.$refs.ruleForm.validateField("checkPass");
+        if (this.changePassForm.confirmPass !== "") {
+          this.$refs.changePassForm.validateField("confirmPass");
         }
         callback();
       }
@@ -78,7 +80,7 @@ export default {
     var validatePass2 = (rule, value, callback) => {
       if (value === "") {
         callback(new Error("Please input the password again"));
-      } else if (value !== this.ruleForm.pass) {
+      } else if (value !== this.changePassForm.password) {
         callback(new Error("Two inputs don't match!"));
       } else {
         callback();
@@ -96,7 +98,7 @@ export default {
         confirmPass: ""
       },
       profileFormRules: {
-        fullName: [
+        name: [
           {
             required: true,
             message: "Please input fullname",
@@ -134,7 +136,8 @@ export default {
   },
 
   computed: {
-    ...mapGetters("auth", ["user"])
+    // ...mapGetters("auth", ["user"]),
+    ...mapState("auth", ["user"])
   },
 
   created() {
@@ -148,6 +151,42 @@ export default {
       if (this.user) {
         this.profileForm = { ...this.user };
       }
+    },
+
+    handleSaveProfile() {
+      this.$refs["profileForm"].validate(async valid => {
+        if (valid) {
+          this.updateProfile({ ...this.profileForm }).then(res => {
+            if (res && res.data && res.statusText === "OK") {
+              this.$message({
+                message: "Profile updated",
+                type: "success"
+              });
+            } else {
+              this.$message.error("Error");
+            }
+          });
+        } else {
+          return false;
+        }
+      });
+    },
+
+    handleSavePassword() {
+      this.$refs["changePassForm"].validate(async valid => {
+        if (valid) {
+          if (res && res.statusText === "OK") {
+            this.$message({
+              message: "Password updated",
+              type: "success"
+            });
+          } else {
+            this.$message.error("Error");
+          }
+        } else {
+          return false;
+        }
+      });
     },
 
     onSubmit() {

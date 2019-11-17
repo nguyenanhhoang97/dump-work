@@ -1,24 +1,29 @@
 import { UPDATE_PROFILE, UPDATE_PASSWORD } from "./types";
-import store from '~/store'
+import store from "~/store";
 import axios from "axios";
 
 export const updateProfile = ({ commit }, params) => {
-  return Promise.resolve(store.commit("global/LOADING", true))
-    .then(() => axios.post("/api/settings/profile", { ...params }))
+  const { email, name } = params;
+  return Promise.resolve(store.commit("global/SET_LOADING", true))
+    .then(() => axios.patch("/api/settings/profile", { email, name }))
     .then(res => {
-      commit(UPDATE_PROFILE, res);
-      store.commit("global/LOADING", false);
+      store.commit("global/SET_LOADING", false);
       return res;
     })
     .catch();
 };
 
 export const updatePassword = ({ commit }, params) => {
-  return Promise.resolve(store.commit("global/LOADING", true))
-    .then(() => axios.post("/api/settings/password", { ...params }))
+  const { password, confirmPass } = params;
+  return Promise.resolve(store.commit("global/SET_LOADING", true))
+    .then(() =>
+      axios.patch("/api/settings/password", {
+        password,
+        password_confirmation: confirmPass
+      })
+    )
     .then(res => {
-      commit(UPDATE_PASSWORD, res);
-      store.commit("global/LOADING", false);
+      store.commit("global/SET_LOADING", false);
       return res;
     })
     .catch();
