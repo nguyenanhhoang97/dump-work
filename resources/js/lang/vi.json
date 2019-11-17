@@ -35,5 +35,62 @@
   "send_verification_link": "Send Verification Link",
   "resend_verification_link": "Resend Verification Link ?",
   "failed_to_verify_email": "Failed to verify email.",
-  "verify_email_address": "We sent you an email with an the verification link."
+  "verify_email_address": "We sent you an email with an the verification link.",
+  "button": {
+    "profile": "Hồ Sơ",
+    "change_password": "Đổi Mật Khẩu",
+    "login": "Đăng Nhập",
+    "register": "Đăng Ký",
+    "remember_me": "Ghi Nhớ Tôi",
+    "forgot_your_password": "Quên Mật Khẩu",
+    "setting": "Thiết Lập",
+    "logout": "Đăng Xuất",
+    "update": "Cập Nhật",
+    "password": "Mật Khẩu",
+    "save": "Lưu",
+    "cancel": "Hủy bỏ",
+    "edit": "Sửa",
+    "confirm": "Xác Nhận",
+    "delete": "Xóa",
+    "new_project": "Tạo mới Dự án",
+    "create_user": "Tạo mới người dùng"
+  },
+
+  "button_dropdown_project": {
+    "action1": "action1",
+    "action2": "action2",
+    "action3": "action3"
+  },
+
+  "button_dropdown_profile": {
+    "profile": "Hồ Sơ",
+    "logout": "Đăng Xuất"
+  },
+
+  "menu": {
+    "dashboard": "Bảng Điều Khiển"
+  },
+
+  "label": {
+    "login": "Đăng Nhập",
+    "password": "Mật Khẩu",
+    "email": "Email",
+    "old_password": "Mật Khẩu Cũ",
+    "new_password": "Mật Khẩu Mới",
+    "confirm_password": "Xác Nhận Mật Khẩu",
+    "warning": "Thông Báo",
+    "create_new_project": "Tạo Mới Dự Án",
+    "user_name": "Tên Người Dùng",
+    "user_list": "Danh Sách Người Dùng",
+    "you_want_to_delete": "Bạn Có Muốn Xóa"
+  },
+
+  "placeholder": {
+    "please_input_username": "Nhập tên người dùng ",
+    "please_input_full_name": "Nhập họ và tên",
+    "please_input_email": "Nhập Email",
+    "please_input_password": "Nhập Mật Khẩu",
+    "please_input_new_password": "Nhập Mật Khẩu Mới",
+    "please_input_password_to_confirm": "Xác Nhận Mật Khẩu"
+  }
 }
