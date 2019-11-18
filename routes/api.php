@@ -30,6 +30,9 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::post('/project/update', 'ProjectController@updateProjectById');
     Route::get('/project/delete', 'ProjectController@deleteProjectById');
     Route::post('/project/create', 'ProjectController@createProject');
+
+    // Users
+    Route::get('user/list', 'UserController@getUserList');
 });
 
 Route::group(['middleware' => 'guest:api'], function () {
