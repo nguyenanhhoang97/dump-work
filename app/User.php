@@ -8,6 +8,7 @@ use Tymon\JWTAuth\Contracts\JWTSubject;
 use Illuminate\Notifications\Notifiable;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use DB;
 
 class User extends Authenticatable implements JWTSubject //, MustVerifyEmail
 {
@@ -56,7 +57,7 @@ class User extends Authenticatable implements JWTSubject //, MustVerifyEmail
      */
     public function getPhotoUrlAttribute()
     {
-        return 'https://www.gravatar.com/avatar/'.md5(strtolower($this->email)).'.jpg?s=200&d=mm';
+        return 'https://www.gravatar.com/avatar/' . md5(strtolower($this->email)) . '.jpg?s=200&d=mm';
     }
 
     /**
@@ -104,5 +105,21 @@ class User extends Authenticatable implements JWTSubject //, MustVerifyEmail
     public function getJWTCustomClaims()
     {
         return [];
+    }
+
+    public static function getAllUsers($pageIndex, $pageSize, $search)
+    {
+        $offset = $pageIndex * $pageSize;
+        return DB::table('users')
+            // ->where('name', 'like', '%' . $search . '%')
+            ->offset($offset)
+            ->limit($pageSize)
+            ->get();
+    }
+
+    public static function countUser()
+    {
+        return DB::table('users')
+            ->count();
     }
 }
