@@ -13,7 +13,7 @@ class UserController extends Controller
     $pageSize = (int) $req->pageSize;
     $search = $req->search;
     $users = User::getAllUsers($pageIndex, $pageSize, $search);
-    $total = User::countUser();
+    $total = User::countUser($search);
     return response()->json(array('users' => $users, 'total' => $total), 200);
   }
 }

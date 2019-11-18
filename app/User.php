@@ -111,15 +111,16 @@ class User extends Authenticatable implements JWTSubject //, MustVerifyEmail
     {
         $offset = $pageIndex * $pageSize;
         return DB::table('users')
-            // ->where('name', 'like', '%' . $search . '%')
+            ->where('name', 'like', '%' . $search . '%')
             ->offset($offset)
             ->limit($pageSize)
             ->get();
     }
 
-    public static function countUser()
+    public static function countUser($search)
     {
         return DB::table('users')
+            ->where('name', 'like', '%' . $search . '%')
             ->count();
     }
 }

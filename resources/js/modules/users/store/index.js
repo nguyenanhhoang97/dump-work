@@ -1,14 +1,18 @@
 import * as getters from "./getters";
 import * as actions from "./actions";
-import { SET_USERS } from "./types";
+import { SET_USERS, SET_TOTAL } from "./types";
 
 const state = {
-  users: []
+  users: [],
+  total: 0
 };
 
 const mutations = {
   [SET_USERS](state, users) {
     state.users = users;
+  },
+  [SET_TOTAL](state, total) {
+    state.total = total;
   }
 };
 
