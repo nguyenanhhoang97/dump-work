@@ -25,12 +25,65 @@
     </div>
     <el-row :gutter="20">
       <el-col :span="4">
-        <create-project-card></create-project-card>
+        <create-project-card
+          @click.native="handleOpenProjectDialog('create')"
+        ></create-project-card>
       </el-col>
       <el-col :span="4" v-for="item in projects" :key="item.id">
-        <project-card :project="item"></project-card>
+        <project-card :project="item" @change="handleProjectActionChange"></project-card>
       </el-col>
     </el-row>
+
+    <!-- Create/Update Project Dialog -->
+    <el-dialog
+      :title="projectTitleDialog"
+      :visible.sync="projectDialogFormVisible"
+    >
+      <el-form :model="projectForm" label-position="left">
+        <el-form-item label="Project Name" :label-width="formLabelWidth">
+          <el-input
+            v-model="projectForm.projectName"
+            autocomplete="off"
+          ></el-input>
+        </el-form-item>
+        <el-form-item label="Project Description" :label-width="formLabelWidth">
+          <el-input
+            v-model="projectForm.projectDescription"
+            autocomplete="off"
+          ></el-input>
+        </el-form-item>
+        <el-form-item label="Team Size" :label-width="formLabelWidth">
+          <el-input
+            v-model="projectForm.teamSize"
+            autocomplete="off"
+          ></el-input>
+        </el-form-item>
+        <el-form-item label="Git Url" :label-width="formLabelWidth">
+          <el-input v-model="projectForm.gitUrl" autocomplete="off"></el-input>
+        </el-form-item>
+        <el-form-item label="Excution Time" :label-width="formLabelWidth">
+          <el-input
+            v-model="projectForm.excutionTime"
+            autocomplete="off"
+          ></el-input>
+        </el-form-item>
+        <el-form-item label="Income" :label-width="formLabelWidth">
+          <el-input v-model="projectForm.incom" autocomplete="off"></el-input>
+        </el-form-item>
+        <el-form-item label="Guarantee" :label-width="formLabelWidth">
+          <el-input
+            v-model="projectForm.guarantee"
+            autocomplete="off"
+          ></el-input>
+        </el-form-item>
+      </el-form>
+      <span slot="footer" class="dialog-footer">
+        <el-button @click="dialogFormVisible = false">Cancel</el-button>
+        <el-button type="primary" @click="dialogFormVisible = false"
+          >Confirm</el-button
+        >
+      </span>
+    </el-dialog>
   </div>
 </template>
 
@@ -50,11 +103,16 @@ export default {
 
   data() {
     return {
+      projectTitleDialog: "",
+      projectForm: {},
+      formLabelWidth: "220px",
+      projectDialogFormVisible: false,
       listFilter: {
         pageIndex: 0,
         pageSize: 1000,
         search: ""
-      }
+      },
+      selectedProject: {}
     };
   },
 
@@ -71,6 +129,24 @@ export default {
 
     initData() {
       this.getProjects({ ...this.listFilter });
+    },
+
+    handleProjectActionChange(type, item) {
+      if (type === "update") {
+        this.selectedProject = item;
+        this.handleOpenProjectDialog("update");
+      } else if (type === "delete") {
+        this.selectedProject = item;
+      }
+    },
+
+    handleOpenProjectDialog(type) {
+      this.projectDialogFormVisible = true;
+      if (type === "create") {
+        this.projectTitleDialog = "Create New Project";
+      } else if (type === "update") {
+        this.projectTitleDialog = "Update Project"
+      }
     }
   }
 };

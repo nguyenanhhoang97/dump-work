@@ -22,7 +22,9 @@
           <div class="friend-avatar">
             <div class="author-thumb">
               <!-- <img src="http://html.crumina.net/html-olympus/img/friend-group1.png" alt="photo" /> -->
-              <el-avatar :size="120"> {{ getCharImg(project.project_name) }} </el-avatar>
+              <el-avatar :size="120">
+                {{ getCharImg(project.project_name) }}
+              </el-avatar>
             </div>
             <div class="author-content">
               <a href="#" class="h5 author-name">{{ project.project_name }}</a>
@@ -31,8 +33,8 @@
           </div>
 
           <div class="control-block-button">
-            <el-button type="success" icon="el-icon-edit" circle></el-button>
-            <el-button type="danger" icon="el-icon-delete" circle></el-button>
+            <el-button type="success" icon="el-icon-edit" @click="handleUpdateProject" circle></el-button>
+            <el-button type="danger" icon="el-icon-delete" @click="handleDeleteProject" circle></el-button>
           </div>
         </div>
       </div>
@@ -45,12 +47,24 @@
 <script>
 export default {
   props: {
-    project: { type: Object, default: null },
+    project: { type: Object, default: null }
   },
 
   methods: {
     getCharImg(content) {
-      return (content.match(/\b(\w)/g)).join('');
+      return content.match(/\b(\w)/g).join("");
+    },
+
+    handleUpdateProject() {
+      this.emitChange("update", this.project);
+    },
+
+    handleDeleteProject() {
+      this.emitChange("delete", this.project);
+    },
+
+    emitChange(type, item) {
+      this.$emit("change", type, item);
     }
   }
 };
