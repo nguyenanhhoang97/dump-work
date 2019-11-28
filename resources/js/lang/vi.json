@@ -82,7 +82,9 @@
     "create_new_project": "Tạo Mới Dự Án",
     "user_name": "Tên Người Dùng",
     "user_list": "Danh Sách Người Dùng",
-    "you_want_to_delete": "Bạn Có Muốn Xóa"
+    "you_want_to_delete": "Bạn Có Muốn Xóa",
+    "you_are_logged_in": "Bạn Đã Đăng Nhập Thành Công"
+
   },
 
   "placeholder": {
@@ -92,5 +94,13 @@
     "please_input_password": "Nhập Mật Khẩu",
     "please_input_new_password": "Nhập Mật Khẩu Mới",
     "please_input_password_to_confirm": "Xác Nhận Mật Khẩu"
+  },
+
+  "validate": {
+    "these_credentials_do_not_match_our_records": "Thông Tin Đăng Nhập Không Tồn Tại",
+    "the_name_field_is_required": "Tên đăng nhập không hợp lệ",
+    "the_email_field_is_required": "Email không hợp lệ",
+    "passwork_is_required": "Mật khẩu không hợp lệ"
+
   }
 }
