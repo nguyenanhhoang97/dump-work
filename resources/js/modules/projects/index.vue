@@ -219,7 +219,12 @@ export default {
   },
 
   methods: {
-    ...mapActions("projects", ["getProjects", "createNewProject"]),
+    ...mapActions("projects", [
+      "getProjects",
+      "createNewProject",
+      "updateProject",
+      "deleteProject"
+    ]),
 
     initData() {
       this.getProjects({ ...this.listFilter });
@@ -228,9 +233,47 @@ export default {
     handleProjectActionChange(type, item) {
       if (type === "update") {
         this.selectedProject = item;
+        this.projectForm = {
+          id: this.selectedProject.id,
+          projectName: this.selectedProject.project_name,
+          projectDescription: this.selectedProject.project_description,
+          teamSize: this.selectedProject.team_size,
+          gitUrl: this.selectedProject.git_url,
+          excutionTime: this.selectedProject.execution_time,
+          cost: this.selectedProject.cost,
+          incom: this.selectedProject.incom,
+          guarantee: this.selectedProject.guarantee
+        };
         this.handleOpenProjectDialog("update");
       } else if (type === "delete") {
         this.selectedProject = item;
+        this.projectForm = {
+          id: this.selectedProject.id
+        };
+        this.$confirm("Are you sure to delete this project?", "Warning", {
+          confirmButtonText: "OK",
+          cancelButtonText: "Cancel",
+          type: "warning"
+        })
+          .then(() => {
+            this.deleteProject({ ...this.projectForm }).then(res => {
+              if (res && res.project) {
+                this.projectForm = {};
+                this.$notify({
+                  title: "Success",
+                  message: res.message,
+                  type: "success"
+                });
+              }
+            });
+            // this.$message({
+            //   type: "success",
+            //   message: "Delete completed"
+            // });
+          })
+          .catch(() => {
+            return false;
+          });
       }
     },
 
@@ -240,6 +283,7 @@ export default {
       }
       this.projectDialogFormVisible = true;
       if (type === "create") {
+        this.projectForm = {};
         this.projectTitleDialog = "Create New Project";
         this.currentFormType = type;
       } else if (type === "update") {
@@ -249,9 +293,9 @@ export default {
     },
 
     handleSubmitForm() {
-      if (this.currentFormType === "create") {
-        this.$refs["projectForm"].validate(valid => {
-          if (valid) {
+      this.$refs["projectForm"].validate(valid => {
+        if (valid) {
+          if (this.currentFormType === "create") {
             this.createNewProject({ ...this.projectForm }).then(res => {
               if (res && res.project) {
                 this.projectDialogFormVisible = false;
@@ -264,13 +308,24 @@ export default {
                 });
               }
             });
-          } else {
-            return false;
+          } else if (this.currentFormType === "update") {
+            this.updateProject({ ...this.projectForm }).then(res => {
+              if (res && res.project) {
+                this.projectDialogFormVisible = false;
+                this.$refs["projectForm"].resetFields();
+                this.projectForm = {};
+                this.$notify({
+                  title: "Success",
+                  message: res.message,
+                  type: "success"
+                });
+              }
+            });
           }
-        });
-      } else if (this.currentFormType === "update") {
-        return;
-      }
+        } else {
+          return false;
+        }
+      });
     }
   }
 };

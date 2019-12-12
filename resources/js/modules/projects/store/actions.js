@@ -1,4 +1,10 @@
-import { SET_PROJECTS, SET_TOTAL, CREATE_NEW_PROJECT } from "./types";
+import {
+  SET_PROJECTS,
+  SET_TOTAL,
+  CREATE_NEW_PROJECT,
+  UPDATE_PROJECT,
+  DELETE_PROJECT
+} from "./types";
 import store from "~/store";
 import axios from "axios";
 
@@ -23,6 +29,32 @@ export const createNewProject = ({ commit }, params) => {
     .then(res => {
       if (res && res.data) {
         commit(CREATE_NEW_PROJECT, res.data.project);
+      }
+      store.commit("global/SET_LOADING", false);
+      return res.data ? res.data : {};
+    })
+    .catch();
+};
+
+export const updateProject = ({ commit }, params) => {
+  return Promise.resolve(store.commit("global/SET_LOADING", true))
+    .then(() => axios.post("/api/project/update", { ...params }))
+    .then(res => {
+      if (res && res.data) {
+        commit(UPDATE_PROJECT, res.data.project);
+      }
+      store.commit("global/SET_LOADING", false);
+      return res.data ? res.data : {};
+    })
+    .catch();
+};
+
+export const deleteProject = ({ commit }, params) => {
+  return Promise.resolve(store.commit("global/SET_LOADING", true))
+    .then(() => axios.post("/api/project/delete", { ...params }))
+    .then(res => {
+      if (res && res.data) {
+        commit(DELETE_PROJECT, res.data.project);
       }
       store.commit("global/SET_LOADING", false);
       return res.data ? res.data : {};

@@ -28,7 +28,7 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::get('/project/list', 'ProjectController@getProjectList');
     Route::get('/project/detail', 'ProjectController@getProjectById');
     Route::post('/project/update', 'ProjectController@updateProjectById');
-    Route::get('/project/delete', 'ProjectController@deleteProjectById');
+    Route::post('/project/delete', 'ProjectController@deleteProjectById');
     Route::post('/project/create', 'ProjectController@createProject');
 
     // Users
