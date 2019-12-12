@@ -28,28 +28,29 @@ class ProjectController extends Controller
     {
         $project = $req->all();
         $project['id'] = (int) $project['id'];
-        $project['execution_time'] = floatval($project['execution_time']);
+        $project['excutionTime'] = floatval($project['excutionTime']);
         $project['cost'] = floatval($project['cost']);
         $project['incom'] = floatval($project['incom']);
         $project['guarantee'] = floatval($project['guarantee']);
-        $result = Project::updateProjectById($project['id'], $project['project_name'], $project['project_description'], $project['team_size'], $project['git_url'], $project['execution_time'], $project['cost'], $project['incom'], $project['guarantee']);
+        $result = Project::updateProjectById($project['id'], $project['projectName'], $project['projectDescription'], $project['teamSize'], $project['gitUrl'], $project['excutionTime'], $project['cost'], $project['incom'], $project['guarantee']);
         if ($result == 1) {
             $updatedProject = Project::getProjectById($project['id']);
             return response()->json(array('message' => 'Updated project successfully', 'project' => $updatedProject), 200);
         } else {
-            return response()->json(array('message' => 'Cannot update project successfully'), 200);
+            return response()->json(array('message' => 'Cannot update project'), 200);
         }
     }
 
     public function deleteProjectById(Request $req)
     {
-        $id = (int) $req->id;
-        $project = Project::deleteProjectById($id);
-        if ($project == 1) {
-            $deletedProject = Project::getProjectById($id);
+        $project = $req->all();
+        $id = $project['id'];
+        $deletedProjectRes = Project::deleteProjectById($id);
+        if ($deletedProjectRes == 1) {
+            $deletedProject = Project::getDeletedProjectById($id);
             return response()->json(array('message' => 'Deleted project successfully', 'project' => $deletedProject), 200);
         } else {
-            return response()->json(array('message' => 'Cannot delete project successfully'), 200);
+            return response()->json(array('message' => 'Cannot delete project'), 200);
         }
     }
 
