@@ -42,41 +42,70 @@
       :title="projectTitleDialog"
       :visible.sync="projectDialogFormVisible"
     >
-      <el-form :model="projectForm" label-position="left">
-        <el-form-item label="Project Name" :label-width="formLabelWidth">
+      <el-form
+        :model="projectForm"
+        :rules="projectFormRules"
+        ref="projectForm"
+        label-position="left"
+      >
+        <el-form-item
+          label="Project Name"
+          :label-width="formLabelWidth"
+          prop="projectName"
+        >
           <el-input
             v-model="projectForm.projectName"
             autocomplete="off"
           ></el-input>
         </el-form-item>
-        <el-form-item label="Project Description" :label-width="formLabelWidth">
+        <el-form-item
+          label="Project Description"
+          :label-width="formLabelWidth"
+          prop="projectDescription"
+        >
           <el-input
             v-model="projectForm.projectDescription"
             autocomplete="off"
           ></el-input>
         </el-form-item>
-        <el-form-item label="Team Size" :label-width="formLabelWidth">
+        <el-form-item
+          label="Team Size"
+          :label-width="formLabelWidth"
+          prop="teamSize"
+        >
           <el-input
             v-model="projectForm.teamSize"
             autocomplete="off"
           ></el-input>
         </el-form-item>
-        <el-form-item label="Git Url" :label-width="formLabelWidth">
+        <el-form-item
+          label="Git Url"
+          :label-width="formLabelWidth"
+          prop="gitUrl"
+        >
           <el-input v-model="projectForm.gitUrl" autocomplete="off"></el-input>
         </el-form-item>
-        <el-form-item label="Excution Time" :label-width="formLabelWidth">
+        <el-form-item
+          label="Excution Time"
+          :label-width="formLabelWidth"
+          prop="excutionTime"
+        >
           <el-input
             v-model="projectForm.excutionTime"
             autocomplete="off"
           ></el-input>
         </el-form-item>
-        <el-form-item label="Cost" :label-width="formLabelWidth">
+        <el-form-item label="Cost" :label-width="formLabelWidth" prop="cost">
           <el-input v-model="projectForm.cost" autocomplete="off"></el-input>
         </el-form-item>
-        <el-form-item label="Income" :label-width="formLabelWidth">
+        <el-form-item label="Income" :label-width="formLabelWidth" prop="incom">
           <el-input v-model="projectForm.incom" autocomplete="off"></el-input>
         </el-form-item>
-        <el-form-item label="Guarantee" :label-width="formLabelWidth">
+        <el-form-item
+          label="Guarantee"
+          :label-width="formLabelWidth"
+          prop="guarantee"
+        >
           <el-input
             v-model="projectForm.guarantee"
             autocomplete="off"
@@ -119,7 +148,65 @@ export default {
         search: ""
       },
       selectedProject: {},
-      currentFormType: ""
+      currentFormType: "",
+      projectFormRules: {
+        projectName: [
+          {
+            required: true,
+            message: "Please input Project name",
+            trigger: "blur"
+          }
+        ],
+        projectDescription: [
+          {
+            required: true,
+            message: "Please select Project Description",
+            trigger: "change"
+          }
+        ],
+        teamSize: [
+          {
+            required: true,
+            message: "Please select Team Size",
+            trigger: "change"
+          }
+        ],
+        gitUrl: [
+          {
+            required: true,
+            message: "Please select Git Url",
+            trigger: "change"
+          }
+        ],
+        excutionTime: [
+          {
+            required: true,
+            message: "Please select Git Url",
+            trigger: "change"
+          }
+        ],
+        cost: [
+          {
+            required: true,
+            message: "Please select Cost",
+            trigger: "change"
+          }
+        ],
+        incom: [
+          {
+            required: true,
+            message: "Please select Income",
+            trigger: "change"
+          }
+        ],
+        guarantee: [
+          {
+            required: true,
+            message: "Please select Guarantee",
+            trigger: "change"
+          }
+        ]
+      }
     };
   },
 
@@ -148,6 +235,9 @@ export default {
     },
 
     handleOpenProjectDialog(type) {
+      if (this.$refs["projectForm"]) {
+        this.$refs["projectForm"].resetFields();
+      }
       this.projectDialogFormVisible = true;
       if (type === "create") {
         this.projectTitleDialog = "Create New Project";
@@ -160,15 +250,22 @@ export default {
 
     handleSubmitForm() {
       if (this.currentFormType === "create") {
-        this.createNewProject({ ...this.projectForm }).then(res => {
-          if (res && res.project) {
-            this.projectDialogFormVisible = false;
-            this.projectForm = {};
-            this.$notify({
-              title: "Success",
-              message: res.message,
-              type: "success"
+        this.$refs["projectForm"].validate(valid => {
+          if (valid) {
+            this.createNewProject({ ...this.projectForm }).then(res => {
+              if (res && res.project) {
+                this.projectDialogFormVisible = false;
+                this.$refs["projectForm"].resetFields();
+                this.projectForm = {};
+                this.$notify({
+                  title: "Success",
+                  message: res.message,
+                  type: "success"
+                });
+              }
             });
+          } else {
+            return false;
           }
         });
       } else if (this.currentFormType === "update") {
