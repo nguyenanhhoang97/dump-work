@@ -56,15 +56,12 @@ class ProjectController extends Controller
     public function createProject(Request $req)
     {
         $project = $req->all();
-        $project['execution_time'] = floatval($project['execution_time']);
+        $project['excutionTime'] = floatval($project['excutionTime']);
         $project['cost'] = floatval($project['cost']);
         $project['incom'] = floatval($project['incom']);
         $project['guarantee'] = floatval($project['guarantee']);
-        $result = Project::createProject($project['project_name'], $project['project_description'], $project['team_size'], $project['git_url'], $project['execution_time'], $project['cost'], $project['incom'], $project['guarantee']);
-        if ($result == true) {
-            return response()->json(array('message' => 'Created project successfully'), 200);
-        } else {
-            return response()->json(array('message' => 'Cannot create project successfully'), 200);
-        }
+        $createdId = Project::createProject($project['projectName'], $project['projectDescription'], $project['teamSize'], $project['gitUrl'], $project['excutionTime'], $project['cost'], $project['incom'], $project['guarantee']);
+        $result = Project::getProjectById($createdId);
+        return response()->json(array('message' => 'Created project successfully', 'project' => $result), 200);
     }
 }

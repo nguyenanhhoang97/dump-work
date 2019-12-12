@@ -20,6 +20,7 @@ class Project extends Model
             // ->where('project_name', 'like', '%' . $search . '%')
             // ->offset($offset)
             // ->limit($pageSize)
+            ->orderBy('id', 'desc')
             ->get();
     }
     public static function getProjectById($id)
@@ -87,7 +88,7 @@ class Project extends Model
         $guarantee
     ) {
         return DB::table('projects')
-            ->insert([
+            ->insertGetId([
                 'project_name' => $project_name, 'project_description' => $project_description, 'team_size' => $team_size, 'git_url' => $git_url, 'execution_time' => $execution_time, 'cost' => $cost, 'incom' => $incom, 'guarantee' => $guarantee
             ]);
     }
