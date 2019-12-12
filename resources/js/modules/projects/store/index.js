@@ -1,4 +1,4 @@
-import { SET_PROJECTS, SET_TOTAL } from "./types";
+import { SET_PROJECTS, SET_TOTAL, CREATE_NEW_PROJECT } from "./types";
 import * as getters from "./getters";
 import * as actions from "./actions";
 
@@ -14,6 +14,12 @@ const mutations = {
 
   [SET_TOTAL](state, total) {
     state.total = total;
+  },
+
+  [CREATE_NEW_PROJECT](state, project) {
+    const { projects } = state;
+    state.projects = [{ ...project }, ...projects];
+    state.total++;
   }
 };
 

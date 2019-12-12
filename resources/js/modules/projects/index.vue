@@ -30,7 +30,10 @@
         ></create-project-card>
       </el-col>
       <el-col :span="4" v-for="item in projects" :key="item.id">
-        <project-card :project="item" @change="handleProjectActionChange"></project-card>
+        <project-card
+          :project="item"
+          @change="handleProjectActionChange"
+        ></project-card>
       </el-col>
     </el-row>
 
@@ -67,6 +70,9 @@
             autocomplete="off"
           ></el-input>
         </el-form-item>
+        <el-form-item label="Cost" :label-width="formLabelWidth">
+          <el-input v-model="projectForm.cost" autocomplete="off"></el-input>
+        </el-form-item>
         <el-form-item label="Income" :label-width="formLabelWidth">
           <el-input v-model="projectForm.incom" autocomplete="off"></el-input>
         </el-form-item>
@@ -79,7 +85,7 @@
       </el-form>
       <span slot="footer" class="dialog-footer">
         <el-button @click="dialogFormVisible = false">Cancel</el-button>
-        <el-button type="primary" @click="dialogFormVisible = false"
+        <el-button type="primary" @click.native="handleSubmitForm()"
           >Confirm</el-button
         >
       </span>
@@ -112,7 +118,8 @@ export default {
         pageSize: 1000,
         search: ""
       },
-      selectedProject: {}
+      selectedProject: {},
+      currentFormType: ""
     };
   },
 
@@ -125,7 +132,7 @@ export default {
   },
 
   methods: {
-    ...mapActions("projects", ["getProjects"]),
+    ...mapActions("projects", ["getProjects", "createNewProject"]),
 
     initData() {
       this.getProjects({ ...this.listFilter });
@@ -144,8 +151,28 @@ export default {
       this.projectDialogFormVisible = true;
       if (type === "create") {
         this.projectTitleDialog = "Create New Project";
+        this.currentFormType = type;
       } else if (type === "update") {
-        this.projectTitleDialog = "Update Project"
+        this.projectTitleDialog = "Update Project";
+        this.currentFormType = type;
+      }
+    },
+
+    handleSubmitForm() {
+      if (this.currentFormType === "create") {
+        this.createNewProject({ ...this.projectForm }).then(res => {
+          if (res && res.project) {
+            this.projectDialogFormVisible = false;
+            this.projectForm = {};
+            this.$notify({
+              title: "Success",
+              message: res.message,
+              type: "success"
+            });
+          }
+        });
+      } else if (this.currentFormType === "update") {
+        return;
       }
     }
   }
