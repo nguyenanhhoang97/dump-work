@@ -79,7 +79,8 @@
     "create_new_project": "Create New Project",
     "user_name": "User Name",
     "user_list": "User List",
-    "you_want_to_delete": "You Want To Delete "
+    "you_want_to_delete": "You Want To Delete ",
+    "you_are_logged_in": "You are logged in"
   },
 
   "placeholder": {
@@ -89,5 +90,12 @@
     "please_input_password": "Please Input Password",
     "please_input_new_password": "Please Input New Password",
     "please_input_password_to_confirm": "Please Input Password To Confirm"
+  },
+
+  "validate": {
+    "these_credentials_do_not_match_our_records": "These credentials do not match our records",
+    "the_name_field_is_required": "The name field is required",
+    "the_email_field_is_required": "The email field is required",
+    "passwork_is_required": "Pass work is required"
   }
 }
