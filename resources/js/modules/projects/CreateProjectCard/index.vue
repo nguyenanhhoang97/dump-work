@@ -10,8 +10,8 @@
         <el-button type="primary" icon="el-icon-plus" circle></el-button>
 
         <div class="author-content">
-          <a href="#" class="h5 author-name">New Project</a>
-          <div class="country">Create New Project</div>
+          <a href="#" class="h5 author-name">{{$t('button.new_project')}}</a>
+          <div class="country">{{$t('label.create_new_project')}}</div>
         </div>
       </div>
     </div>

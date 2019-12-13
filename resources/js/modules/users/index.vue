@@ -2,13 +2,13 @@
   <div class="users">
     <el-card class="box-card">
       <div slot="header" class="clearfix">
-        <span>USER LIST</span>
+        <span>{{$t('label.user_list')}}</span>
         <el-button style="float: right" type="primary" plain @click="handleOpenCreateDialog()">Create User</el-button>
       </div>
       <el-table :data="users" stripe style="width: 100%">
         <el-table-column prop="id" label="ID" width="100"></el-table-column>
         <el-table-column prop="email" label="Email"></el-table-column>
-        <el-table-column prop="name" label="Name"></el-table-column>
+        <el-table-column prop="name" :label="$t('label.name')"></el-table-column>
         <el-table-column fixed="right" label width="120">
           <template slot-scope="scope">
             <!-- Edit -->
@@ -28,7 +28,7 @@
       <!-- Dialog Create -->
       <el-dialog title="Create New User" :visible.sync="createDialogVisible">
         <el-form :model="createForm" ref="createForm" :rules="createFormRules" label-position="left">
-          <el-form-item label="Name" :label-width="formLabelWidth" prop="name">
+          <el-form-item :label="$t('label.name')" :label-width="formLabelWidth" prop="name">
             <el-input
               placeholder="Please input name"
               v-model="createForm.name"
@@ -42,7 +42,7 @@
               autocomplete="off"
             ></el-input>
           </el-form-item>
-          <el-form-item label="New Password" :label-width="formLabelWidth" prop="password">
+          <el-form-item :label="$t('label.password')" :label-width="formLabelWidth" prop="password">
             <el-input
               placeholder="Please New Password"
               v-model="createForm.password"
@@ -58,7 +58,7 @@
           </el-form-item>
         </el-form>
         <span slot="footer" class="dialog-footer">
-          <el-button @click="createDialogVisible = false">Cancel</el-button>
+          <el-button @click="createDialogVisible = false">{{$t('button.cancel')}}</el-button>
           <el-button type="primary" @click="handleSubmitForm('create', 'createForm')"
             >Confirm</el-button
           >

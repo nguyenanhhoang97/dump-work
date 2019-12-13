@@ -6,12 +6,10 @@
         <div class="row">
           <div class="col col-lg-8 m-auto col-md-8 col-sm-12 col-12">
             <div class="main-header-content">
-              <h1>Welcome to dump-work!</h1>
+              <h1>{{$t('label.welcome_to_dump_work')}}</h1>
               <p>
-                Welcome to dump-work! This is the testing message. Blah blah
-                blah blah blah blah blah blah blah blah blah blah blah blah blah
-                blah blah blah blah blah blah blah blah blah blah blah blah blah
-                blah blah blah blah blah.
+                Welcome to dump-work! <br> Have a good Day ^.^ <br> Blah blah
+                blah blah blah blah blah blah blah blah blah blah blah blah blah.
               </p>
             </div>
           </div>
@@ -49,7 +47,7 @@
         label-position="left"
       >
         <el-form-item
-          label="Project Name"
+          :label="$t('label.project_name')"
           :label-width="formLabelWidth"
           prop="projectName"
         >
@@ -59,7 +57,7 @@
           ></el-input>
         </el-form-item>
         <el-form-item
-          label="Project Description"
+          :label="$t('label.project_description')"
           :label-width="formLabelWidth"
           prop="projectDescription"
         >
@@ -69,7 +67,7 @@
           ></el-input>
         </el-form-item>
         <el-form-item
-          label="Team Size"
+          :label="$t('label.team_size')"
           :label-width="formLabelWidth"
           prop="teamSize"
         >
@@ -86,7 +84,7 @@
           <el-input v-model="projectForm.gitUrl" autocomplete="off"></el-input>
         </el-form-item>
         <el-form-item
-          label="Excution Time"
+          :label="$t('label.excution_time')"
           :label-width="formLabelWidth"
           prop="excutionTime"
         >
@@ -95,14 +93,14 @@
             autocomplete="off"
           ></el-input>
         </el-form-item>
-        <el-form-item label="Cost" :label-width="formLabelWidth" prop="cost">
+        <el-form-item :label="$t('label.cost')" :label-width="formLabelWidth" prop="cost">
           <el-input v-model="projectForm.cost" autocomplete="off"></el-input>
         </el-form-item>
-        <el-form-item label="Income" :label-width="formLabelWidth" prop="incom">
+        <el-form-item :label="$t('label.income')" :label-width="formLabelWidth" prop="incom">
           <el-input v-model="projectForm.incom" autocomplete="off"></el-input>
         </el-form-item>
         <el-form-item
-          label="Guarantee"
+          :label="$t('label.guarantee')"
           :label-width="formLabelWidth"
           prop="guarantee"
         >
@@ -113,9 +111,9 @@
         </el-form-item>
       </el-form>
       <span slot="footer" class="dialog-footer">
-        <el-button @click="dialogFormVisible = false">Cancel</el-button>
+        <el-button @click="dialogFormVisible = false">{{$t('button.cancel')}}</el-button>
         <el-button type="primary" @click.native="handleSubmitForm()"
-          >Confirm</el-button
+          >{{$t('button.confirm')}}</el-button
         >
       </span>
     </el-dialog>
