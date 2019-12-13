@@ -52,19 +52,21 @@
     "edit": "Sửa",
     "confirm": "Xác Nhận",
     "delete": "Xóa",
-    "new_project": "Tạo mới Dự án",
+    "new_project": "Tạo Mới Dự Án",
     "create_user": "Tạo mới người dùng"
   },
 
-  "button_dropdown_project": {
-    "action1": "action1",
-    "action2": "action2",
-    "action3": "action3"
+  "header": {
+    "create_new_project": "Tạo Một Dự Án Mới",
+    "update_project": "Cập Nhật Dự Án"
   },
 
-  "button_dropdown_profile": {
+  "dropdown": {
     "profile": "Hồ Sơ",
-    "logout": "Đăng Xuất"
+    "setting": "Thiết Lập",
+    "logout": "Đăng Xuất",
+    "delete": "Xóa",
+    "update": "Cập Nhật"
   },
 
   "menu": {
@@ -79,12 +81,23 @@
     "new_password": "Mật Khẩu Mới",
     "confirm_password": "Xác Nhận Mật Khẩu",
     "warning": "Thông Báo",
-    "create_new_project": "Tạo Mới Dự Án",
+    "create_new_project": "Tạo Một Dự Án Mới",
     "user_name": "Tên Người Dùng",
     "user_list": "Danh Sách Người Dùng",
     "you_want_to_delete": "Bạn Có Muốn Xóa",
-    "you_are_logged_in": "Bạn Đã Đăng Nhập Thành Công"
-
+    "you_are_logged_in": "Bạn Đã Đăng Nhập Thành Công",
+    "welcome_to_dump_work": "Chào Mừng Đến Với Dump Work !",
+    "project_name": "Tên Dự Án",
+    "project_description": "Mô Tả Dự Án",
+    "team_size": "Số Người Tham Gia",
+    "excution_time": "Thời Gian Thực Hiện",
+    "cost": "Chi phí",
+    "income": "Lợi Nhuận",
+    "guarantee": "Bảo Hành",
+    "name": "Tên Người Dùng",
+    "profile": "Hồ Sơ",
+    "change_password": "Đổi Mật Khẩu",
+    "full_name": "Họ và Tên"
   },
 
   "placeholder": {
@@ -101,6 +114,5 @@
     "the_name_field_is_required": "Tên đăng nhập không hợp lệ",
     "the_email_field_is_required": "Email không hợp lệ",
     "passwork_is_required": "Mật khẩu không hợp lệ"
-
   }
 }
