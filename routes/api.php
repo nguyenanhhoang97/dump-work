@@ -33,6 +33,8 @@ Route::group(['middleware' => 'auth:api'], function () {
 
     // Users
     Route::get('user/list', 'UserController@getUserList');
+    Route::post('user/create', 'UserController@create');
+
 });
 
 Route::group(['middleware' => 'guest:api'], function () {

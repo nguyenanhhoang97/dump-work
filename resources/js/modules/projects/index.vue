@@ -158,49 +158,49 @@ export default {
         projectDescription: [
           {
             required: true,
-            message: "Please select Project Description",
+            message: "Please input Project Description",
             trigger: "change"
           }
         ],
         teamSize: [
           {
             required: true,
-            message: "Please select Team Size",
+            message: "Please input Team Size",
             trigger: "change"
           }
         ],
         gitUrl: [
           {
             required: true,
-            message: "Please select Git Url",
+            message: "Please input Git Url",
             trigger: "change"
           }
         ],
         excutionTime: [
           {
             required: true,
-            message: "Please select Git Url",
+            message: "Please input Git Url",
             trigger: "change"
           }
         ],
         cost: [
           {
             required: true,
-            message: "Please select Cost",
+            message: "Please input Cost",
             trigger: "change"
           }
         ],
         incom: [
           {
             required: true,
-            message: "Please select Income",
+            message: "Please input Income",
             trigger: "change"
           }
         ],
         guarantee: [
           {
             required: true,
-            message: "Please select Guarantee",
+            message: "Please input Guarantee",
             trigger: "change"
           }
         ]
