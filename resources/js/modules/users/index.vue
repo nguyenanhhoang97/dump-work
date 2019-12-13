@@ -16,14 +16,16 @@
         <el-table-column prop="email" label="Email"></el-table-column>
         <el-table-column prop="name" label="Name"></el-table-column>
         <el-table-column fixed="right" label width="120">
-          <!-- Edit -->
-          <el-button type="text" @click="dialogFormVisible = true"
-            >Edit</el-button
-          >
-          <!-- Delete -->
-          <el-button type="text" @click="centerDialogVisible = true"
-            >Delete</el-button
-          >
+          <template slot-scope="scope">
+            <!-- Edit -->
+            <el-button type="text" @click="dialogFormVisible = true"
+              >Edit</el-button
+            >
+            <!-- Delete -->
+            <el-button type="text" @click="centerDialogVisible = true"
+              >Delete</el-button
+            >
+          </template>
         </el-table-column>
       </el-table>
       <el-pagination
@@ -151,7 +153,7 @@ export default {
   },
 
   computed: {
-    ...mapState("users", ["users", "total"])
+    ...mapState("users", ["users", "total"]),
   },
 
   created() {
