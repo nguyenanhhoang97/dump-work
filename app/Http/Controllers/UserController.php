@@ -28,4 +28,22 @@ class UserController extends Controller
       'password' => bcrypt($password),
     ]);
   }
+
+  public function updateUserById(Request $req)
+  {
+    $id = (int) $req->id;
+    $name = $req->name;
+    $email = $req->email;
+    $result = User::updateUserById(
+      $id,
+      $name,
+      $email
+    );
+    if ($result == 1) {
+      $updatedUser = User::getUserById($id);
+      return response()->json(array('message' => 'Updated user successfully', 'user' => $updatedUser), 200);
+    } else {
+      return response()->json(array('message' => 'Cannot update user'), 200);
+    }
+  }
 }
