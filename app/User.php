@@ -114,6 +114,7 @@ class User extends Authenticatable implements JWTSubject //, MustVerifyEmail
             ->where('name', 'like', '%' . $search . '%')
             ->offset($offset)
             ->limit($pageSize)
+            ->orderBy('id', 'desc')
             ->get();
     }
 

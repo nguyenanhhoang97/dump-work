@@ -1,4 +1,4 @@
-import { SET_USERS, SET_TOTAL } from "./types";
+import { SET_USERS, SET_TOTAL, UPDATE_USER, CREATE_NEW_USER } from "./types";
 import store from "~/store";
 import axios from "axios";
 
@@ -12,6 +12,24 @@ export const getUsers = ({ commit }, params) => {
       }
       store.commit("global/SET_LOADING", false);
       return res.data ? res.data : {};
+    })
+    .catch();
+};
+
+export const updateUser = ({ commit }, params) => {
+  return Promise.resolve(store.commit("global/SET_LOADING", true))
+    .then(() => {
+      commit(UPDATE_USER, params);
+      store.commit("global/SET_LOADING", false);
+    })
+    .catch();
+};
+
+export const createUser = ({ commit }, params) => {
+  return Promise.resolve(store.commit("global/SET_LOADING", true))
+    .then(() => {
+      commit(CREATE_NEW_USER, params);
+      store.commit("global/SET_LOADING", false);
     })
     .catch();
 };
