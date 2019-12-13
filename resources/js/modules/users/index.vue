@@ -2,28 +2,28 @@
   <div class="users">
     <el-card class="box-card">
       <div slot="header" class="clearfix">
-        <span>USER LIST</span>
+        <span>{{$t('label.user_list')}}</span>
         <!-- <el-button style="float: right; padding: 3px 0" type="text">Create</el-button> -->
         <el-button
           style="float: right; padding: 3px 0"
           type="text"
           @click="dialogFormCreate = true"
-          >Create User</el-button
+          >{{$t('button.create_user')}}</el-button
         >
       </div>
       <el-table :data="users" stripe style="width: 100%">
         <el-table-column prop="id" label="ID" width="100"></el-table-column>
         <el-table-column prop="email" label="Email"></el-table-column>
-        <el-table-column prop="name" label="Name"></el-table-column>
+        <el-table-column prop="name" :label="$t('label.name')"></el-table-column>
         <el-table-column fixed="right" label width="120">
           <template slot-scope="scope">
             <!-- Edit -->
             <el-button type="text" @click="dialogFormVisible = true"
-              >Edit</el-button
+              >{{$t('button.edit')}}</el-button
             >
             <!-- Delete -->
             <el-button type="text" @click="centerDialogVisible = true"
-              >Delete</el-button
+              >{{$t('button.delete')}}</el-button
             >
           </template>
         </el-table-column>
@@ -40,7 +40,7 @@
       <!-- Dialog Create -->
       <el-dialog title="Create New User" :visible.sync="dialogFormCreate">
         <el-form :model="form">
-          <el-form-item label="Name" :label-width="formLabelWidth">
+          <el-form-item :label="$t('label.name')" :label-width="formLabelWidth">
             <el-input
               placeholder="Please input name"
               v-model="form.name"
@@ -54,7 +54,7 @@
               autocomplete="off"
             ></el-input>
           </el-form-item>
-          <el-form-item label="Password" :label-width="formLabelWidth">
+          <el-form-item :label="$t('label.password')" :label-width="formLabelWidth">
             <el-input
               placeholder="Please input password"
               v-model="form.passwork"
@@ -63,9 +63,9 @@
           </el-form-item>
         </el-form>
         <span slot="footer" class="dialog-footer">
-          <el-button @click="dialogFormCreate = false">Cancel</el-button>
+          <el-button @click="dialogFormCreate = false">{{$t('button.cancel')}}</el-button>
           <el-button type="primary" @click="dialogFormCreate = false"
-            >Confirm</el-button
+            >{{$t('button.confirm')}}</el-button
           >
         </span>
       </el-dialog>

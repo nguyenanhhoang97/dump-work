@@ -1,11 +1,11 @@
 <template>
   <el-card class="box-card">
     <div slot="header" class="clearfix">
-      <span>Updape Profile</span>
+      <span>Update Profile</span>
     </div>
     <el-tabs v-model="activeName" @tab-click="handleClick">
       <!-- Profile -->
-      <el-tab-pane label="Profile" name="profile">
+      <el-tab-pane :label="$t('button.profile')" name="profile">
         <el-form
           ref="profileForm"
           :model="profileForm"
@@ -13,7 +13,7 @@
           :label-width="labelWidth"
           label-position="left"
         >
-          <el-form-item label="Fullname" prop="name">
+          <el-form-item :label="$t('label.full_name')" prop="name">
             <el-input
               placeholder="Please Input Full Name"
               v-model="profileForm.name"
@@ -27,12 +27,12 @@
             ></el-input>
           </el-form-item>
           <el-button type="primary" @click.native="handleSaveProfile"
-            >Save</el-button
+            >{{$t('button.save')}}</el-button
           >
         </el-form>
       </el-tab-pane>
       <!-- Change Password -->
-      <el-tab-pane label="Change Password" name="changePassword">
+      <el-tab-pane :label="$t('label.change_password')" name="changePassword">
         <el-form
           ref="changePassForm"
           :model="changePassForm"
@@ -40,21 +40,21 @@
           :label-width="labelWidth"
           label-position="left"
         >
-          <el-form-item label="New Password" prop="password">
+          <el-form-item :label="$t('label.new_password')" prop="password">
             <el-input
-              placeholder="Please New Password"
+              :placeholder="$t('placeholder.please_input_new_password')"
               v-model="changePassForm.password"
               show-password
             ></el-input>
           </el-form-item>
-          <el-form-item label="Confirm Password" prop="confirmPass">
+          <el-form-item :label="$t('label.confirm_password')" prop="confirmPass">
             <el-input
-              placeholder="Please Input Password To Confirm"
+              :placeholder="$t('placeholder.please_input_password_to_confirm')"
               v-model="changePassForm.confirmPass"
               show-password
             ></el-input>
           </el-form-item>
-          <el-button type="primary" @click="handleSavePassword">Save</el-button>
+          <el-button type="primary" @click="handleSavePassword">{{$t('button.save')}}</el-button>
         </el-form>
       </el-tab-pane>
     </el-tabs>
