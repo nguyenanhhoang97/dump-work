@@ -17,7 +17,6 @@
     "make:controller": "php artisan make:controller",
     "make:model": "php artisan make:model",
     "env": "cp .env.example .env"
-
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.17",

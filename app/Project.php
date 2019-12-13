@@ -23,6 +23,7 @@ class Project extends Model
             ->orderBy('id', 'desc')
             ->get();
     }
+
     public static function getProjectById($id)
     {
         return DB::table('projects')
@@ -32,11 +33,11 @@ class Project extends Model
     }
 
     public static function getDeletedProjectById($id)
-    { 
+    {
         return DB::table('projects')
-        ->where('id', $id)
-        ->where('is_deleted', true)
-        ->first();
+            ->where('id', $id)
+            ->where('is_deleted', true)
+            ->first();
     }
 
     public static function updateProjectById(

@@ -107,6 +107,13 @@ class User extends Authenticatable implements JWTSubject //, MustVerifyEmail
         return [];
     }
 
+    public static function getUserById($id)
+    {
+        return DB::table('users')
+            ->where('id', $id)
+            ->first();
+    }
+
     public static function getAllUsers($pageIndex, $pageSize, $search)
     {
         $offset = $pageIndex * $pageSize;
@@ -123,5 +130,18 @@ class User extends Authenticatable implements JWTSubject //, MustVerifyEmail
         return DB::table('users')
             ->where('name', 'like', '%' . $search . '%')
             ->count();
+    }
+
+    public static function updateUserById(
+        $id,
+        $name,
+        $email
+    ) {
+        return DB::table('users')
+            ->where('id', $id)
+            ->update([
+                'name' => $name,
+                'email' => $email
+            ]);
     }
 }

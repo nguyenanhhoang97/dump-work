@@ -197,7 +197,7 @@ export default {
 
   methods: {
     ...mapActions("users", ["getUsers", "updateUser", "createUser"]),
-    ...mapActions("session", ["updateProfile", "createNewUser"]),
+    ...mapActions("session", ["createNewUser"]),
 
     initData() {
       this.getUsers({ ...this.listFilter });
@@ -251,15 +251,13 @@ export default {
               }
             });
           } else if (type === "update") {
-            this.updateProfile({ ...this.editForm }).then(res => {
-              if (res && res.data && res.statusText === "OK") {
-                this.updateUser({...res.data}).then(() => {
-                  this.editDialogVisible = false;
-                  this.$refs[formRef].resetFields();
-                  this.$message({
-                    message: "Profile updated",
-                    type: "success"
-                  });
+            this.updateUser({ ...this.editForm }).then(res => {
+              if (res) {
+                this.editDialogVisible = false;
+                this.$refs[formRef].resetFields();
+                this.$message({
+                  message: "User is updated",
+                  type: "success"
                 });
               } else {
                 this.$message.error("Error");

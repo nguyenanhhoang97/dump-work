@@ -16,11 +16,25 @@ export const getUsers = ({ commit }, params) => {
     .catch();
 };
 
+// export const updateUser = ({ commit }, params) => {
+//   return Promise.resolve(store.commit("global/SET_LOADING", true))
+//     .then(() => {
+//       commit(UPDATE_USER, params);
+//       store.commit("global/SET_LOADING", false);
+//     })
+//     .catch();
+// };
+
 export const updateUser = ({ commit }, params) => {
   return Promise.resolve(store.commit("global/SET_LOADING", true))
-    .then(() => {
-      commit(UPDATE_USER, params);
+    .then(() => axios.post("/api/user/update", { ...params }))
+    .then(res => {
+      if (res && res.data && res.data.user) {
+        commit(UPDATE_USER, res.data.user);
+        return res.data.user;
+      }
       store.commit("global/SET_LOADING", false);
+      return res.data ? res.data : {};
     })
     .catch();
 };
