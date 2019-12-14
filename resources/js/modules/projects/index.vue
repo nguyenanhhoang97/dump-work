@@ -264,10 +264,6 @@ export default {
                 });
               }
             });
-            // this.$message({
-            //   type: "success",
-            //   message: "Delete completed"
-            // });
           })
           .catch(() => {
             return false;

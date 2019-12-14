@@ -2,17 +2,31 @@
   <div class="users">
     <el-card class="box-card">
       <div slot="header" class="clearfix">
-        <span>{{$t('label.user_list')}}</span>
-        <el-button style="float: right" type="primary" plain @click="handleOpenCreateDialog()">{{$t('button.create_user')}}</el-button>
+        <span>{{ $t("label.user_list") }}</span>
+        <el-button
+          style="float: right"
+          type="primary"
+          plain
+          @click="handleOpenCreateDialog()"
+          >{{ $t("button.create_user") }}</el-button
+        >
       </div>
       <el-table :data="users" stripe style="width: 100%">
-        <el-table-column prop="id" label="ID" width="100"></el-table-column>
+        <el-table-column type="index" width="50"> </el-table-column>
         <el-table-column prop="email" label="Email"></el-table-column>
-        <el-table-column prop="name" :label="$t('label.name')"></el-table-column>
+        <el-table-column
+          prop="name"
+          :label="$t('label.name')"
+        ></el-table-column>
         <el-table-column fixed="right" label width="120">
           <template slot-scope="scope">
             <!-- Edit -->
-            <el-button type="primary" icon="el-icon-edit" plain @click="handleOpenEditDialog(scope.row)"></el-button>
+            <el-button
+              type="primary"
+              icon="el-icon-edit"
+              plain
+              @click="handleOpenEditDialog(scope.row)"
+            ></el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -26,30 +40,54 @@
         :total="total"
       ></el-pagination>
       <!-- Dialog Create -->
-      <el-dialog :title="$t('header.create_new_user')" :visible.sync="createDialogVisible">
-        <el-form :model="createForm" ref="createForm" :rules="createFormRules" label-position="left">
-          <el-form-item :label="$t('label.name')" :label-width="formLabelWidth" prop="name">
+      <el-dialog
+        :title="$t('header.create_new_user')"
+        :visible.sync="createDialogVisible"
+      >
+        <el-form
+          :model="createForm"
+          ref="createForm"
+          :rules="createFormRules"
+          label-position="left"
+        >
+          <el-form-item
+            :label="$t('label.name')"
+            :label-width="formLabelWidth"
+            prop="name"
+          >
             <el-input
               :placeholder="$t('placeholder.please_input_username')"
               v-model="createForm.name"
               autocomplete="off"
             ></el-input>
           </el-form-item>
-          <el-form-item label="Email" :label-width="formLabelWidth" prop="email">
+          <el-form-item
+            label="Email"
+            :label-width="formLabelWidth"
+            prop="email"
+          >
             <el-input
               :placeholder="$t('placeholder.please_input_email')"
               v-model="createForm.email"
               autocomplete="off"
             ></el-input>
           </el-form-item>
-          <el-form-item :label="$t('label.password')" :label-width="formLabelWidth" prop="password">
+          <el-form-item
+            :label="$t('label.password')"
+            :label-width="formLabelWidth"
+            prop="password"
+          >
             <el-input
               :placeholder="$t('placeholder.please_input_password')"
               v-model="createForm.password"
               show-password
             ></el-input>
           </el-form-item>
-          <el-form-item :label="$t('label.confirm_password')" :label-width="formLabelWidth" prop="confirmPass">
+          <el-form-item
+            :label="$t('label.confirm_password')"
+            :label-width="formLabelWidth"
+            prop="confirmPass"
+          >
             <el-input
               :placeholder="$t('placeholder.please_input_password_to_confirm')"
               v-model="createForm.confirmPass"
@@ -58,22 +96,38 @@
           </el-form-item>
         </el-form>
         <span slot="footer" class="dialog-footer">
-          <el-button @click="createDialogVisible = false">{{$t('button.cancel')}}</el-button>
-          <el-button type="primary" @click="handleSubmitForm('create', 'createForm')"
-            >{{$t('button.confirm')}}</el-button
+          <el-button @click="createDialogVisible = false">{{
+            $t("button.cancel")
+          }}</el-button>
+          <el-button
+            type="primary"
+            @click="handleSubmitForm('create', 'createForm')"
+            >{{ $t("button.confirm") }}</el-button
           >
         </span>
       </el-dialog>
       <!-- Dialog Edit -->
-      <el-dialog :title="$t('header.edit_user')" :visible.sync="editDialogVisible">
-        <el-form :model="editForm" ref="editForm" :rules="editFormRules" label-position="left">
-          <el-form-item :label="$t('label.name')" :label-width="formLabelWidth" prop="name">
+      <el-dialog
+        :title="$t('header.edit_user')"
+        :visible.sync="editDialogVisible"
+      >
+        <el-form
+          :model="editForm"
+          ref="editForm"
+          :rules="editFormRules"
+          label-position="left"
+        >
+          <el-form-item label="Name" :label-width="formLabelWidth" prop="name">
             <el-input
               placeholder="Please input name you want update"
               v-model="editForm.name"
             ></el-input>
           </el-form-item>
-          <el-form-item label="Email" :label-width="formLabelWidth" prop="email">
+          <el-form-item
+            label="Email"
+            :label-width="formLabelWidth"
+            prop="email"
+          >
             <el-input
               placeholder="Please input eamil you want update"
               v-model="editForm.email"
@@ -81,9 +135,13 @@
           </el-form-item>
         </el-form>
         <span slot="footer" class="dialog-footer">
-          <el-button @click="editDialogVisible = false">{{$t('button.cancel')}}</el-button>
-          <el-button type="primary" @click="handleSubmitForm('update', 'editForm')"
-            >{{$t('button.confirm')}}</el-button
+          <el-button @click="editDialogVisible = false">{{
+            $t("button.cancel")
+          }}</el-button>
+          <el-button
+            type="primary"
+            @click="handleSubmitForm('update', 'editForm')"
+            >Confirm</el-button
           >
         </span>
       </el-dialog>
@@ -147,7 +205,7 @@ export default {
             message: "Please Input Email",
             trigger: "change"
           }
-        ],
+        ]
       },
       createFormRules: {
         name: [
@@ -181,14 +239,14 @@ export default {
       formLabelWidth: "180px",
       listFilter: {
         pageIndex: 0,
-        pageSize: 100,
+        pageSize: 10,
         search: ""
       }
     };
   },
 
   computed: {
-    ...mapState("users", ["users", "total"]),
+    ...mapState("users", ["users", "total"])
   },
 
   created() {
@@ -217,11 +275,11 @@ export default {
       if (this.$refs["editForm"]) {
         this.$refs["editForm"].resetFields();
       }
-      this.editForm = { 
+      this.editForm = {
         id: val.id,
         name: val.name,
         email: val.email
-       };
+      };
       this.editDialogVisible = true;
     },
 
@@ -238,7 +296,7 @@ export default {
           if (type === "create") {
             this.createNewUser({ ...this.createForm }).then(res => {
               if (res && res.data && res.statusText === "Created") {
-                this.createUser({...res.data}).then(() => {
+                this.createUser({ ...res.data }).then(() => {
                   this.createDialogVisible = false;
                   this.$refs[formRef].resetFields();
                   this.$message({
@@ -269,7 +327,7 @@ export default {
         }
       });
     }
-  },
+  }
 };
 </script>
 

@@ -35,6 +35,9 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::get('user/list', 'UserController@getUserList');
     Route::post('user/create', 'UserController@create');
     Route::post('user/update', 'UserController@updateUserById');
+
+    // Dashboard
+    Route::get('dashboard', 'DashboardController@getDashboardData');
 });
 
 Route::group(['middleware' => 'guest:api'], function () {
