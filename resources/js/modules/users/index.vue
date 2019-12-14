@@ -141,7 +141,7 @@
           <el-button
             type="primary"
             @click="handleSubmitForm('update', 'editForm')"
-            >Confirm</el-button
+            >{{$t('button.confirm')}}</el-button
           >
         </span>
       </el-dialog>
