@@ -66,10 +66,19 @@ export default {
   },
 
   computed: {
-    ...mapState("dashboard", ["totalProject", "totalUser"])
+    ...mapState("dashboard", ["totalProject", "totalUser"]),
+    ...mapState("auth", ["user"]),
+    ...mapState("global", ["routes"]),
+
+    currentRoute() {
+      return this.$route.name;
+    }
   },
 
   created() {
+    if (!this.checkRolePage()) {
+      this.$router.push({ name: "projects" });
+    }
     this.initData();
   },
 
@@ -78,6 +87,15 @@ export default {
 
     initData() {
       this.getDashboardData();
+    },
+
+    checkRolePage() {
+      const currentRole = this.currentRoute;
+      const idx = this.routes.findIndex(elm => elm.name === currentRole);
+      const { roles } = this.routes[idx];
+      const { role_code: role } = this.user;
+      const checked = roles.includes(role);
+      return !!checked;
     }
   }
 };

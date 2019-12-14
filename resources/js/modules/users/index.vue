@@ -246,10 +246,19 @@ export default {
   },
 
   computed: {
-    ...mapState("users", ["users", "total"])
+    ...mapState("users", ["users", "total"]),
+    ...mapState("auth", ["user"]),
+    ...mapState("global", ["routes"]),
+
+    currentRoute() {
+      return this.$route.name;
+    }
   },
 
   created() {
+    if (!this.checkRolePage()) {
+      this.$router.push({ name: "*" });
+    }
     this.initData();
   },
 
@@ -326,6 +335,15 @@ export default {
           return false;
         }
       });
+    },
+
+    checkRolePage() {
+      const currentRole = this.currentRoute;
+      const idx = this.routes.findIndex(elm => elm.name === currentRole);
+      const { roles } = this.routes[idx];
+      const { role_code: role } = this.user;
+      const checked = roles.includes(role);
+      return !!checked;
     }
   }
 };
