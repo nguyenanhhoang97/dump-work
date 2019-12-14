@@ -92,13 +92,15 @@
     "name": "Name",
     "profile": "Profile",
     "change_password": "Change Password",
-    "full_name": "Full Name",
-    "edit_user": "Edit User"
+    "full_name": "Full Name"
   },
 
   "header": {
-    "create_new_project":"Tạo Một Dự Án Mới",
-    "update_project": "Cập Nhật Dự Án"
+    "create_new_project":"Create New Project",
+    "update_project": "Update Project",
+    "create_new_user": "Create New User",
+    "edit_user": "Edit User"
+
     },
 
   "placeholder": {
@@ -107,7 +109,8 @@
     "please_input_email": "Please Input Email",
     "please_input_password": "Please Input Password",
     "please_input_new_password": "Please Input New Password",
-    "please_input_password_to_confirm": "Please Input Password To Confirm"
+    "please_input_password_to_confirm": "Please Input Password To Confirm",
+    "password": "Password"
   },
 
   "validate": {
