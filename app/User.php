@@ -144,4 +144,10 @@ class User extends Authenticatable implements JWTSubject //, MustVerifyEmail
                 'email' => $email
             ]);
     }
+
+    public static function countUserWithoutConditon()
+    {
+        return DB::table('users')
+            ->count();
+    }
 }
