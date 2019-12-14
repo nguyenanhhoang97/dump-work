@@ -53,12 +53,15 @@
     "confirm": "Xác Nhận",
     "delete": "Xóa",
     "new_project": "Tạo Mới Dự Án",
-    "create_user": "Tạo mới người dùng"
+    "create_user": "Tạo Mới"
   },
 
   "header": {
     "create_new_project": "Tạo Một Dự Án Mới",
-    "update_project": "Cập Nhật Dự Án"
+    "update_project": "Cập Nhật Dự Án",
+    "create_new_user": "Tạo Mới Người Dùng",
+    "edit_user": "Cập Nhật Người Dùng"
+
   },
 
   "dropdown": {
@@ -106,7 +109,9 @@
     "please_input_email": "Nhập Email",
     "please_input_password": "Nhập Mật Khẩu",
     "please_input_new_password": "Nhập Mật Khẩu Mới",
-    "please_input_password_to_confirm": "Xác Nhận Mật Khẩu"
+    "please_input_password_to_confirm": "Xác Nhận Mật Khẩu",
+    "password": "Mật Khẩu"
+
   },
 
   "validate": {
