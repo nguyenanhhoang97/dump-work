@@ -22,6 +22,12 @@ const state = {
       name: "Users",
       route: "users",
       icon: "tim-icons icon-single-02"
+    },
+    {
+      id: 3,
+      name: "Roles",
+      route: "roles",
+      icon: "tim-icons icon-settings-gear-63"
     }
   ]
 };

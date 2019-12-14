@@ -5,6 +5,7 @@ import projects from "~/modules/projects/store";
 import users from "~/modules/users/store";
 import session from "~/modules/session/store";
 import dashboard from "~/modules/dashboard/store";
+import roles from "~/modules/roles/store";
 
 Vue.use(Vuex);
 
@@ -29,6 +30,7 @@ export default new Vuex.Store({
     projects,
     users,
     session,
-    dashboard
+    dashboard,
+    roles
   }
 });
