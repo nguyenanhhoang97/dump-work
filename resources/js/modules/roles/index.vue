@@ -41,10 +41,19 @@ export default {
   },
 
   computed: {
-    ...mapState("roles", ["roles", "total"])
+    ...mapState("roles", ["roles", "total"]),
+    ...mapState("auth", ["user"]),
+    ...mapState("global", ["routes"]),
+
+    currentRoute() {
+      return this.$route.name;
+    }
   },
 
   created() {
+    if (!this.checkRolePage()) {
+      this.$router.push({ name: "*" });
+    }
     this.initData();
   },
 
@@ -63,6 +72,15 @@ export default {
     handleCurrentChange(val) {
       this.listFilter.pageIndex = val - 1;
       this.getRoles({ ...this.listFilter });
+    },
+
+    checkRolePage() {
+      const currentRole = this.currentRoute;
+      const idx = this.routes.findIndex(elm => elm.name === currentRole);
+      const { roles } = this.routes[idx];
+      const { role_code: role } = this.user;
+      const checked = roles.includes(role);
+      return !!checked;
     }
   }
 };
