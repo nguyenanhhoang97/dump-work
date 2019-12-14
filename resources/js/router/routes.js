@@ -20,6 +20,7 @@ export default [
   { path: '/dashboard', name: 'dashboard', component: module('dashboard/index.vue') },
   { path: '/users', name: 'users', component: module('users/index.vue') },
   { path: '/projects', name: 'projects', component: module('projects/index.vue') },
+  { path: '/roles', name: 'roles', component: module('roles/index.vue') },
   { path: '/profile', name: 'profile', component: module('session/profile.vue') },
   { path: '/settings',
     component: page('settings/index.vue'),

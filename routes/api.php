@@ -38,6 +38,9 @@ Route::group(['middleware' => 'auth:api'], function () {
 
     // Dashboard
     Route::get('dashboard', 'DashboardController@getDashboardData');
+
+    // Role
+    Route::get('role/list', 'RoleController@getRoleList');
 });
 
 Route::group(['middleware' => 'guest:api'], function () {
